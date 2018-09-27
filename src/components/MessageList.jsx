@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
+import { connect } from 'react-redux';
 
 const styles = {
 	PanelMessage: {
@@ -38,9 +39,13 @@ const MessageList = ({ classes, listOfMessages }) => {
 	);
 };
 
+const mapStateToProps = (state) => ({
+	listOfMessages: state.listOfMessages
+});
+
 MessageList.propTypes = {
 	classes: PropTypes.object.isRequired,
 	listOfMessages: PropTypes.array.isRequired
 };
 
-export default injectSheet(styles)(MessageList);
+export default connect(mapStateToProps)(injectSheet(styles)(MessageList));

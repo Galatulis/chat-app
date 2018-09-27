@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
+import { connect } from 'react-redux';
 
 const styles = {
 	SideBar: {
@@ -28,9 +29,13 @@ const SideBar = ({ classes, listOfUsers }) => {
 	);
 };
 
+const mapStateToProps = (state) => ({
+	listOfUsers: state.listOfUsers
+});
+
 SideBar.propTypes = {
 	classes: PropTypes.object.isRequired,
 	listOfUsers: PropTypes.array.isRequired
 };
 
-export default injectSheet(styles)(SideBar);
+export default connect(mapStateToProps)(injectSheet(styles)(SideBar));

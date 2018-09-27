@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
+import { connect } from 'react-redux';
+import { actions } from '../store';
 
 const styles = {
 	PanelControl: {
@@ -35,19 +37,46 @@ const styles = {
 };
 
 class MessageInput extends Component {
+	handleChange = (event) => {
+		const { setCurrentMessage } = this.props;
+		setCurrentMessage(event.target.value);
+	}
+	handleSubmit = (event) => {
+		const { setCurrentMessage } = this.props;
+		event.preventDefault();
+		setCurrentMessage('');
+	}
 	render() {
-		const { classes } = this.props;
+		const { classes, currentMessage } = this.props;
 		return (
-			<div className={classes.PanelControl}>
-				<input className={classes.InputMessage} type='text' />
+			<form
+				className={classes.PanelControl}
+				onSubmit={this.handleSubmit}
+			>
+				<input
+					className={classes.InputMessage}
+					onChange={this.handleChange}
+					value={currentMessage}
+					type='text'
+				/>
 				<button className={classes.ButtonSend}>Send</button>
-			</div>
+			</form>
 		);
 	}
 }
 
+const mapStateToProps = (state) => ({
+	currentMessage: state.currentMessage
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	setCurrentMessage: payload => dispatch(actions.setCurrentMessage(payload))
+});
+
 MessageInput.propTypes = {
-	classes: PropTypes.object.isRequired
+	classes: PropTypes.object.isRequired,
+	currentMessage: PropTypes.string.isRequired,
+	setCurrentMessage: PropTypes.func.isRequired
 };
 
-export default injectSheet(styles)(MessageInput);
+export default connect(mapStateToProps, mapDispatchToProps)(injectSheet(styles)(MessageInput));

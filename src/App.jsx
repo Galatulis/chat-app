@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
-import TitleBar from './components/TitleBar';
-import SideBar from './components/SideBar';
-import MessageList from './components/MessageList';
-import MessageInput from './containers/MessageInput';
+import { TitleBar, SideBar, MessageList } from './components';
+import { MessageInput } from './containers';
 
 const styles = {
 	GridContainer: {
@@ -30,8 +28,8 @@ class App extends Component {
 		return (
 			<div className={classes.GridContainer}>
 				<TitleBar />
-				<SideBar listOfUsers={this.state.listOfUsers} />
-				<MessageList listOfMessages={this.state.listOfMessages} />
+				<SideBar />
+				<MessageList />
 				<MessageInput />
 			</div>
 		);
