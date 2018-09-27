@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
 import { connect } from 'react-redux';
 import { actions } from '../store';
+import setupSocket, { socket } from '../socket';
 
 const styles = {
 	PanelControl: {
@@ -42,9 +43,21 @@ class MessageInput extends Component {
 		setCurrentMessage(event.target.value);
 	}
 	handleSubmit = (event) => {
-		const { setCurrentMessage } = this.props;
+		const { currentUser, currentMessage, setCurrentMessage } = this.props;
 		event.preventDefault();
+		socket.send(JSON.stringify({
+			type: 'ADD_MESSAGE',
+			payload: {
+				author: currentUser,
+				text: currentMessage
+			}
+		}));
 		setCurrentMessage('');
+	}
+	componentDidMount() {
+		const { dispatch, currentUser } = this.props;
+		document.title = 'Chat App';
+		setupSocket(dispatch, currentUser);
 	}
 	render() {
 		const { classes, currentMessage } = this.props;
@@ -66,16 +79,20 @@ class MessageInput extends Component {
 }
 
 const mapStateToProps = (state) => ({
+	currentUser: state.currentUser,
 	currentMessage: state.currentMessage
 });
 
 const mapDispatchToProps = (dispatch) => ({
+	dispatch: dispatch,
 	setCurrentMessage: payload => dispatch(actions.setCurrentMessage(payload))
 });
 
 MessageInput.propTypes = {
 	classes: PropTypes.object.isRequired,
+	currentUser: PropTypes.object.isRequired,
 	currentMessage: PropTypes.string.isRequired,
+	dispatch: PropTypes.func.isRequired,
 	setCurrentMessage: PropTypes.func.isRequired
 };
 

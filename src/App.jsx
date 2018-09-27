@@ -19,10 +19,6 @@ const styles = {
 };
 
 class App extends Component {
-	state = {
-		listOfMessages: [],
-		listOfUsers: []
-	}
 	render() {
 		const { classes } = this.props;
 		return (
