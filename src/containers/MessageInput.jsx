@@ -16,7 +16,7 @@ const styles = {
 	},
 	InputMessage: {
 		background: '#fff',
-		border: 0,
+		border: '0px',
 		borderBottom: '1px solid #eee',
 		boxSizing: 'border-box',
 		color: '#555',
@@ -56,7 +56,6 @@ class MessageInput extends Component {
 	}
 	componentDidMount() {
 		const { dispatch, currentUser } = this.props;
-		document.title = 'Chat App';
 		setupSocket(dispatch, currentUser);
 	}
 	render() {
@@ -90,7 +89,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 MessageInput.propTypes = {
 	classes: PropTypes.object.isRequired,
-	currentUser: PropTypes.object.isRequired,
+	currentUser: PropTypes.string.isRequired,
 	currentMessage: PropTypes.string.isRequired,
 	dispatch: PropTypes.func.isRequired,
 	setCurrentMessage: PropTypes.func.isRequired

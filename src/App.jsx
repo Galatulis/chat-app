@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import injectSheet from 'react-jss';
+import { TYPES } from './store';
+import { socket } from './socket';
 import { TitleBar, SideBar, MessageList } from './components';
 import { MessageInput } from './containers';
+import LoginPanel from './containers/LoginPanel';
 
 const styles = {
 	GridContainer: {
@@ -19,15 +22,33 @@ const styles = {
 };
 
 class App extends Component {
+	state = {
+		loggedIn: false
+	}
+	logIn = (name) => {
+		this.setState({ loggedIn: true });
+		socket.send(JSON.stringify({
+			type: TYPES.ADD_USER,
+			payload: {
+				name
+			}
+		}));
+	}
+	componentDidMount() {
+		document.title = 'Chat App';
+	}
 	render() {
 		const { classes } = this.props;
 		return (
-			<div className={classes.GridContainer}>
-				<TitleBar />
-				<SideBar />
-				<MessageList />
-				<MessageInput />
-			</div>
+			<Fragment>
+				{ !this.state.loggedIn ? <LoginPanel logIn={this.logIn}/> :
+					(<div className={classes.GridContainer}>
+						<TitleBar />
+						<SideBar />
+						<MessageList />
+						<MessageInput />
+					</div>) }
+			</Fragment>
 		);
 	}
 }
