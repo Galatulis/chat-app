@@ -13,8 +13,8 @@ const styles = {
 		grid: {
 			gap: '10px',
 			templateAreas: '"header header"\n"sidebar content"\n"sidebar control"',
-			templateColumns: '1fr 3fr',
-			templateRows: '1fr 4fr 1fr'
+			templateColumns: 'minmax(50px, 150px) minmax(50px, 450px)',
+			templateRows: 'minmax(50px, 100px) minmax(50px, 400px) minmax(50px, 100px)'
 		},
 		margin: 'auto',
 		maxWidth: '600px'
