@@ -2,7 +2,7 @@ import { actions, TYPES } from '../store';
 
 const { addUser, addMessage, listUsers, receiveMessages } = actions;
 
-export const socket = new WebSocket(`ws://${process.env.REACT_APP_DOMAIN || 'localhost'}:${process.env.REACT_APP_PORT || 4000}`);
+export const socket = new WebSocket(`wss://${process.env.REACT_APP_DOMAIN || 'localhost'}:${process.env.REACT_APP_PORT || 4000}`);
 
 const setupSocket = (dispatch, name) => {
 	socket.onopen = () => {
