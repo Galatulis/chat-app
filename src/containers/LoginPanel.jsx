@@ -66,7 +66,7 @@ class LoginPanel extends Component {
 					value={this.state.userName}
 					type='text'
 				/>
-				<button className={classes.ButtonLogin}>Send</button>
+				<button className={classes.ButtonLogin}>Login</button>
 			</form>
 		);
 	}

@@ -6,7 +6,7 @@
 * [React](https://reactjs.org/)
 * [Redux](https://redux.js.org/)
 * [JSS](https://cssinjs.org/)
-* [ws](https://github.com/websockets/ws)
+* [WebSocket](https://github.com/websockets/ws)
 
 ## License
 
