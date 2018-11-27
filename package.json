@@ -3,12 +3,21 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
-		"react": "^16.6.0",
-		"react-dom": "^16.6.0",
+		"react": "^16.6.3",
+		"react-dom": "^16.6.3",
 		"react-jss": "^8.6.1",
-		"react-redux": "^5.1.0",
-		"react-scripts": "2.0.3",
+		"react-redux": "^5.1.1",
+		"react-scripts": "^2.1.1",
 		"redux": "^4.0.1"
+	},
+	"devDependencies": {
+		"@types/jest": "23.3.10",
+		"@types/node": "10.12.11",
+		"@types/react": "16.7.11",
+		"@types/react-dom": "16.0.11",
+		"@types/react-jss": "^8.6.0",
+		"@types/react-redux": "^6.0.10",
+		"typescript": "3.2.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -17,51 +26,7 @@
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {
-		"env": {
-			"browser": true,
-			"es6": true
-		},
-		"extends": [
-			"eslint:recommended",
-			"plugin:react/recommended"
-		],
-		"parser": "babel-eslint",
-		"parserOptions": {
-			"ecmaFeatures": {
-				"jsx": true
-			},
-			"ecmaVersion": 2018,
-			"sourceType": "module"
-		},
-		"plugins": [
-			"react"
-		],
-		"rules": {
-			"indent": [
-				"error",
-				"tab"
-			],
-			"linebreak-style": [
-				"error",
-				"unix"
-			],
-			"quotes": [
-				"error",
-				"single"
-			],
-			"semi": [
-				"error",
-				"always"
-			],
-			"jsx-quotes": [
-				"error",
-				"prefer-single"
-			],
-			"comma-dangle": [
-				"error",
-				"never"
-			]
-		}
+		"extends": "react-app"
 	},
 	"browserslist": [
 		">0.2%",
