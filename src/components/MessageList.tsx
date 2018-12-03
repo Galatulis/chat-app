@@ -5,6 +5,23 @@ import { connect } from 'react-redux';
 import { IGlobalState, IMessage } from '../interfaces';
 import { createStyles } from '../utils';
 
+interface IProps extends WithSheet<typeof styles> {
+	listOfMessages: IMessage[];
+}
+
+const MessageList = ({ classes, listOfMessages }: IProps) => {
+	return (
+		<div className={classes.PanelMessage}>
+			{listOfMessages.map(message => (
+				<p key={message.id} className={classes.TextMessage}>
+					<span className={classes.TextMessageAuthor}>{message.author}</span>
+					&nbsp;&#58;&nbsp; {message.text}
+				</p>
+			))}
+		</div>
+	);
+};
+
 const styles = () =>
 	createStyles({
 		PanelMessage: {
@@ -27,23 +44,6 @@ const styles = () =>
 			textTransform: 'uppercase'
 		}
 	});
-
-interface IProps extends WithSheet<typeof styles> {
-	listOfMessages: IMessage[];
-}
-
-const MessageList = ({ classes, listOfMessages }: IProps) => {
-	return (
-		<div className={classes.PanelMessage}>
-			{listOfMessages.map(message => (
-				<p key={message.id} className={classes.TextMessage}>
-					<span className={classes.TextMessageAuthor}>{message.author}</span>
-					&nbsp;&#58;&nbsp; {message.text}
-				</p>
-			))}
-		</div>
-	);
-};
 
 const mapStateToProps = (state: IGlobalState) => ({
 	listOfMessages: state.listOfMessages

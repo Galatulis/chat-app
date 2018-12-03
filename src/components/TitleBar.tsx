@@ -3,6 +3,16 @@ import injectSheet, { WithSheet } from 'react-jss';
 
 import { createStyles } from '../utils';
 
+interface IProps extends WithSheet<typeof styles> {}
+
+const TitleBar = ({ classes }: IProps) => {
+	return (
+		<div className={classes.PanelTitle}>
+			<p className={classes.TextTitle}>chat-app</p>
+		</div>
+	);
+};
+
 const styles = () =>
 	createStyles({
 		PanelTitle: {
@@ -19,15 +29,5 @@ const styles = () =>
 			textTransform: 'lowercase'
 		}
 	});
-
-interface IProps extends WithSheet<typeof styles> {}
-
-const TitleBar = ({ classes }: IProps) => {
-	return (
-		<div className={classes.PanelTitle}>
-			<p className={classes.TextTitle}>chat-app</p>
-		</div>
-	);
-};
 
 export default injectSheet(styles)(TitleBar);

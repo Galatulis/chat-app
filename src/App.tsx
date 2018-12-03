@@ -6,21 +6,6 @@ import { LoginPanel, MessageInput } from './containers';
 import { socket } from './socket';
 import { createStyles } from './utils';
 
-const styles = () =>
-	createStyles({
-		GridContainer: {
-			display: 'grid',
-			gridGap: '10px',
-			gridTemplateAreas:
-				'"header header"\n"sidebar content"\n"sidebar control"',
-			gridTemplateColumns: 'minmax(50px, 150px) minmax(50px, 450px)',
-			gridTemplateRows:
-				'minmax(50px, 100px) minmax(50px, 400px) minmax(50px, 100px)',
-			margin: 'auto',
-			maxWidth: '600px'
-		}
-	});
-
 interface IProps extends WithSheet<typeof styles> {}
 
 interface IState {
@@ -63,5 +48,20 @@ class App extends Component<IProps, IState> {
 		);
 	}
 }
+
+const styles = () =>
+	createStyles({
+		GridContainer: {
+			display: 'grid',
+			gridGap: '10px',
+			gridTemplateAreas:
+				'"header header"\n"sidebar content"\n"sidebar control"',
+			gridTemplateColumns: 'minmax(50px, 150px) minmax(50px, 450px)',
+			gridTemplateRows:
+				'minmax(50px, 100px) minmax(50px, 400px) minmax(50px, 100px)',
+			margin: 'auto',
+			maxWidth: '600px'
+		}
+	});
 
 export default injectSheet(styles)(App);
