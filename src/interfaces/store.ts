@@ -1,6 +1,6 @@
-import { Store as ReduxStore } from 'redux';
+import { Store as ReduxStore } from "redux";
 
-import { Action } from './action';
-import { IGlobalState } from './state';
+import { Action } from "./action";
+import { GlobalState } from "./state";
 
-export type Store = ReduxStore<IGlobalState, Action>;
+export type Store = ReduxStore<GlobalState, Action>;

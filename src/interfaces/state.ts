@@ -1,17 +1,17 @@
-export interface IMessage {
+export interface Message {
 	id: number;
 	text: string;
 	author: string;
 }
 
-export interface IUser {
+export interface User {
 	id: number;
 	name: string;
 }
 
-export interface IGlobalState {
-	listOfUsers: IUser[];
-	listOfMessages: IMessage[];
+export interface GlobalState {
+	listOfUsers: User[];
+	listOfMessages: Message[];
 	currentUser: string;
 	currentMessage: string;
 }

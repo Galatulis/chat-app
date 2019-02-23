@@ -1,11 +1,11 @@
-import { createStore, Store } from 'redux';
+import { createStore, Store } from "redux";
 
-import { Action, IGlobalState } from '../interfaces';
-import { actions } from './actions';
-import { reducers } from './reducers';
+import { Action, GlobalState } from "../interfaces";
+import { actions } from "./actions";
+import { reducers } from "./reducers";
 
 export { actions };
 
-const store: Store<IGlobalState, Action> = createStore(reducers);
+const store: Store<GlobalState, Action> = createStore(reducers);
 
 export default store;

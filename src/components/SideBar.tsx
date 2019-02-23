@@ -1,15 +1,15 @@
-import React from 'react';
-import injectSheet, { WithSheet } from 'react-jss';
-import { connect } from 'react-redux';
+import React from "react";
+import injectSheet, { WithSheet } from "react-jss";
+import { connect } from "react-redux";
 
-import { IGlobalState, IUser } from '../interfaces';
-import { createStyles } from '../utils';
+import { GlobalState, User } from "../interfaces";
+import { createStyles } from "../utils";
 
-interface IProps extends WithSheet<typeof styles> {
-	listOfUsers: IUser[];
+interface Props extends WithSheet<typeof styles> {
+	listOfUsers: User[];
 }
 
-const SideBar = ({ classes, listOfUsers }: IProps) => {
+const SideBar = ({ classes, listOfUsers }: Props) => {
 	return (
 		<div className={classes.SideBar}>
 			{listOfUsers.map(user => (
@@ -21,23 +21,24 @@ const SideBar = ({ classes, listOfUsers }: IProps) => {
 	);
 };
 
-const styles = () =>
-	createStyles({
+function styles() {
+	return createStyles({
 		SideBar: {
-			border: '1px solid #ddd',
-			borderRadius: '3px',
-			boxShadow: '1px 3px 5px rgba(0,0,0,0.2)',
-			gridArea: 'sidebar',
-			overflow: 'auto',
-			padding: '10px 20px'
+			border: "1px solid #ddd",
+			borderRadius: "3px",
+			boxShadow: "1px 3px 5px rgba(0,0,0,0.2)",
+			gridArea: "sidebar",
+			overflow: "auto",
+			padding: "10px 20px"
 		},
 		TextUser: {
-			color: '#42b0f4',
-			textTransform: 'uppercase'
+			color: "#42b0f4",
+			textTransform: "uppercase"
 		}
 	});
+}
 
-const mapStateToProps = (state: IGlobalState) => ({
+const mapStateToProps = (state: GlobalState) => ({
 	listOfUsers: state.listOfUsers
 });
 

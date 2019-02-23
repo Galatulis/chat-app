@@ -1,18 +1,16 @@
-import React, { Component, Fragment } from 'react';
-import injectSheet, { WithSheet } from 'react-jss';
+import React, { Component, Fragment } from "react";
+import injectSheet, { WithSheet } from "react-jss";
 
-import { MessageList, SideBar, TitleBar } from './components';
-import { LoginPanel, MessageInput } from './containers';
-import { socket } from './socket';
-import { createStyles } from './utils';
+import { MessageList, SideBar, TitleBar } from "./components";
+import { LoginPanel, MessageInput } from "./containers";
+import { socket } from "./socket";
+import { createStyles } from "./utils";
 
-interface IProps extends WithSheet<typeof styles> {}
-
-interface IState {
+interface State {
 	loggedIn: boolean;
 }
 
-class App extends Component<IProps, IState> {
+class App extends Component<WithSheet<typeof styles>, State> {
 	public state = {
 		loggedIn: false
 	};
@@ -23,12 +21,12 @@ class App extends Component<IProps, IState> {
 				payload: {
 					name
 				},
-				type: 'ADD_USER'
+				type: "ADD_USER"
 			})
 		);
 	};
 	public componentDidMount() {
-		document.title = 'Chat App';
+		document.title = "Chat App";
 	}
 	public render() {
 		const { classes } = this.props;
@@ -49,19 +47,20 @@ class App extends Component<IProps, IState> {
 	}
 }
 
-const styles = () =>
-	createStyles({
+function styles() {
+	return createStyles({
 		GridContainer: {
-			display: 'grid',
-			gridGap: '10px',
+			display: "grid",
+			gridGap: "10px",
 			gridTemplateAreas:
 				'"header header"\n"sidebar content"\n"sidebar control"',
-			gridTemplateColumns: 'minmax(50px, 150px) minmax(50px, 450px)',
+			gridTemplateColumns: "minmax(50px, 150px) minmax(50px, 450px)",
 			gridTemplateRows:
-				'minmax(50px, 100px) minmax(50px, 400px) minmax(50px, 100px)',
-			margin: 'auto',
-			maxWidth: '600px'
+				"minmax(50px, 100px) minmax(50px, 400px) minmax(50px, 100px)",
+			margin: "auto",
+			maxWidth: "600px"
 		}
 	});
+}
 
 export default injectSheet(styles)(App);
