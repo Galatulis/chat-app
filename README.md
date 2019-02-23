@@ -3,10 +3,10 @@
 
 ## Built With
 
-* [React](https://reactjs.org/)
-* [Redux](https://redux.js.org/)
-* [JSS](https://cssinjs.org/)
-* [WebSocket](https://github.com/websockets/ws)
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [JSS](https://cssinjs.org/)
+- [WebSocket](https://github.com/websockets/ws)
 
 ## License
 
