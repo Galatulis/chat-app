@@ -1,13 +1,13 @@
 import React from "react";
 import injectSheet, { WithSheet } from "react-jss";
 
-const TitleBar = ({ classes }: WithSheet<typeof styles>) => {
+function TitleBar({ classes }: WithSheet<typeof styles>) {
 	return (
 		<div className={classes.PanelTitle}>
 			<p className={classes.TextTitle}>chat-app</p>
 		</div>
 	);
-};
+}
 
 function styles() {
 	return {

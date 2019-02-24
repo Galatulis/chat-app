@@ -1,4 +1,4 @@
-import React, { Component, FormEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 import injectSheet, { WithSheet } from "react-jss";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
@@ -12,40 +12,32 @@ interface Props extends WithSheet<typeof styles> {
 	setCurrentUser: (_: string) => void;
 }
 
-interface State {
-	userName: string;
-}
+function LoginPanel({ classes, logIn, setCurrentUser }: Props) {
+	const [userName, setUserName] = useState<string>("");
 
-class LoginPanel extends Component<Props, State> {
-	public state = {
-		userName: ""
+	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setUserName(event.target.value);
 	};
-	public handleChange = (event: FormEvent<HTMLInputElement>) => {
-		this.setState({ userName: event.currentTarget.value });
-	};
-	public handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-		const { userName } = this.state;
-		const { setCurrentUser, logIn } = this.props;
+
+	const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		if (userName !== "") {
 			setCurrentUser(userName);
 			logIn(userName);
 		}
 	};
-	public render() {
-		const { classes } = this.props;
-		return (
-			<form className={classes.PanelLogin} onSubmit={this.handleSubmit}>
-				<input
-					className={classes.InputUserName}
-					onChange={this.handleChange}
-					value={this.state.userName}
-					type="text"
-				/>
-				<button className={classes.ButtonLogin}>Login</button>
-			</form>
-		);
-	}
+
+	return (
+		<form className={classes.PanelLogin} onSubmit={handleSubmit}>
+			<input
+				className={classes.InputUserName}
+				onChange={handleChange}
+				value={userName}
+				type="text"
+			/>
+			<button className={classes.ButtonLogin}>Login</button>
+		</form>
+	);
 }
 
 function styles() {

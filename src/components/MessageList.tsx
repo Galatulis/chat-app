@@ -8,7 +8,7 @@ interface Props extends WithSheet<typeof styles> {
 	listOfMessages: Message[];
 }
 
-const MessageList = ({ classes, listOfMessages }: Props) => {
+function MessageList({ classes, listOfMessages }: Props) {
 	return (
 		<div className={classes.PanelMessage}>
 			{listOfMessages.map(message => (
@@ -19,7 +19,7 @@ const MessageList = ({ classes, listOfMessages }: Props) => {
 			))}
 		</div>
 	);
-};
+}
 
 function styles() {
 	return {

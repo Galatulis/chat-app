@@ -8,7 +8,7 @@ interface Props extends WithSheet<typeof styles> {
 	listOfUsers: User[];
 }
 
-const SideBar = ({ classes, listOfUsers }: Props) => {
+function SideBar({ classes, listOfUsers }: Props) {
 	return (
 		<div className={classes.SideBar}>
 			{listOfUsers.map(user => (
@@ -18,7 +18,7 @@ const SideBar = ({ classes, listOfUsers }: Props) => {
 			))}
 		</div>
 	);
-};
+}
 
 function styles() {
 	return {

@@ -1,4 +1,4 @@
-import React, { Component, FormEvent } from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import injectSheet, { WithSheet } from "react-jss";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
@@ -14,13 +14,14 @@ interface Props extends WithSheet<typeof styles> {
 	setCurrentMessage: (_: string) => void;
 }
 
-class MessageInput extends Component<Props> {
-	public handleChange = (event: FormEvent<HTMLInputElement>) => {
-		const { setCurrentMessage } = this.props;
-		setCurrentMessage(event.currentTarget.value);
+function MessageInput(props: Props) {
+	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+		const { setCurrentMessage } = props;
+		setCurrentMessage(event.target.value);
 	};
-	public handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-		const { currentUser, currentMessage, setCurrentMessage } = this.props;
+
+	const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+		const { currentUser, currentMessage, setCurrentMessage } = props;
 		event.preventDefault();
 		socket.send(
 			JSON.stringify({
@@ -33,24 +34,26 @@ class MessageInput extends Component<Props> {
 		);
 		setCurrentMessage("");
 	};
-	public componentDidMount() {
-		const { dispatch, currentUser } = this.props;
+
+	useEffect(() => {
+		const { dispatch, currentUser } = props;
 		setupSocket(dispatch, currentUser);
-	}
-	public render() {
-		const { classes, currentMessage } = this.props;
-		return (
-			<form className={classes.PanelControl} onSubmit={this.handleSubmit}>
-				<input
-					className={classes.InputMessage}
-					onChange={this.handleChange}
-					value={currentMessage}
-					type="text"
-				/>
-				<button className={classes.ButtonSend}>Send</button>
-			</form>
-		);
-	}
+
+		return () => {};
+	});
+
+	const { classes, currentMessage } = props;
+	return (
+		<form className={classes.PanelControl} onSubmit={handleSubmit}>
+			<input
+				className={classes.InputMessage}
+				onChange={handleChange}
+				value={currentMessage}
+				type="text"
+			/>
+			<button className={classes.ButtonSend}>Send</button>
+		</form>
+	);
 }
 
 function styles() {

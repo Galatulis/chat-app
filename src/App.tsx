@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { useEffect, useState } from "react";
 import injectSheet, { WithSheet } from "react-jss";
 
 import { socket } from "./services";
@@ -10,16 +10,12 @@ import {
 	TitleBar
 } from "./components";
 
-interface State {
-	loggedIn: boolean;
-}
+function App({ classes }: WithSheet<typeof styles>) {
+	const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
-class App extends Component<WithSheet<typeof styles>, State> {
-	public state = {
-		loggedIn: false
-	};
-	public logIn = (name: string) => {
-		this.setState({ loggedIn: true });
+	const logIn = (name: string) => {
+		setLoggedIn(true);
+
 		socket.send(
 			JSON.stringify({
 				payload: {
@@ -29,26 +25,21 @@ class App extends Component<WithSheet<typeof styles>, State> {
 			})
 		);
 	};
-	public componentDidMount() {
+
+	useEffect(() => {
 		document.title = "Chat App";
-	}
-	public render() {
-		const { classes } = this.props;
-		return (
-			<Fragment>
-				{!this.state.loggedIn ? (
-					<LoginPanel logIn={this.logIn} />
-				) : (
-					<div className={classes.GridContainer}>
-						<TitleBar />
-						<SideBar />
-						<MessageList />
-						<MessageInput />
-					</div>
-				)}
-			</Fragment>
-		);
-	}
+	});
+
+	return !loggedIn ? (
+		<LoginPanel logIn={logIn} />
+	) : (
+		<div className={classes.GridContainer}>
+			<TitleBar />
+			<SideBar />
+			<MessageList />
+			<MessageInput />
+		</div>
+	);
 }
 
 function styles() {
