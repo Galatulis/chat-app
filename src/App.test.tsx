@@ -1,10 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
+import { cleanup, render } from "./test";
 import App from "./App";
 
-it("renders without crashing", () => {
-	const div = document.createElement("div");
-	ReactDOM.render(<App />, div);
-	ReactDOM.unmountComponentAtNode(div);
+afterEach(cleanup);
+
+describe("App", () => {
+	it("renders without crashing", () => {
+		render(<App />);
+	});
 });
