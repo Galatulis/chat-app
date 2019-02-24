@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 
 import { actions } from "../actions";
 import { GlobalState } from "../interfaces";
-import { createStyles } from "../utils";
 
 interface Props extends WithSheet<typeof styles> {
 	currentUser: string;
@@ -50,7 +49,7 @@ class LoginPanel extends Component<Props, State> {
 }
 
 function styles() {
-	return createStyles({
+	return {
 		ButtonLogin: {
 			background: "#42b0f4",
 			border: "2px solid #42b0f4",
@@ -79,7 +78,7 @@ function styles() {
 			margin: "30vh auto",
 			maxWidth: "400px"
 		}
-	});
+	};
 }
 
 const mapStateToProps = (state: GlobalState) => ({

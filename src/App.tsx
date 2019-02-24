@@ -1,10 +1,14 @@
 import React, { Component, Fragment } from "react";
 import injectSheet, { WithSheet } from "react-jss";
 
-import { MessageList, SideBar, TitleBar } from "./components";
-import { LoginPanel, MessageInput } from "./containers";
-import { socket } from "./socket";
-import { createStyles } from "./utils";
+import { socket } from "./services";
+import {
+	LoginPanel,
+	MessageInput,
+	MessageList,
+	SideBar,
+	TitleBar
+} from "./components";
 
 interface State {
 	loggedIn: boolean;
@@ -48,7 +52,7 @@ class App extends Component<WithSheet<typeof styles>, State> {
 }
 
 function styles() {
-	return createStyles({
+	return {
 		GridContainer: {
 			display: "grid",
 			gridGap: "10px",
@@ -60,7 +64,7 @@ function styles() {
 			margin: "auto",
 			maxWidth: "600px"
 		}
-	});
+	};
 }
 
 export default injectSheet(styles)(App);

@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import setupSocket, { socket } from "../services";
 import { actions } from "../actions";
 import { GlobalState } from "../interfaces";
-import { createStyles } from "../utils";
 
 interface Props extends WithSheet<typeof styles> {
 	currentUser: string;
@@ -55,7 +54,7 @@ class MessageInput extends Component<Props> {
 }
 
 function styles() {
-	return createStyles({
+	return {
 		ButtonSend: {
 			background: "#42b0f4",
 			border: "2px solid #42b0f4",
@@ -83,7 +82,7 @@ function styles() {
 			gridArea: "control",
 			gridTemplateRows: "60% 40%"
 		}
-	});
+	};
 }
 
 const mapStateToProps = (state: GlobalState) => ({

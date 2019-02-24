@@ -3,7 +3,6 @@ import injectSheet, { WithSheet } from "react-jss";
 import { connect } from "react-redux";
 
 import { GlobalState, Message } from "../interfaces";
-import { createStyles } from "../utils";
 
 interface Props extends WithSheet<typeof styles> {
 	listOfMessages: Message[];
@@ -23,7 +22,7 @@ const MessageList = ({ classes, listOfMessages }: Props) => {
 };
 
 function styles() {
-	return createStyles({
+	return {
 		PanelMessage: {
 			border: "1px solid #ddd",
 			borderRadius: "3px",
@@ -43,7 +42,7 @@ function styles() {
 			color: "#42b0f4",
 			textTransform: "uppercase"
 		}
-	});
+	};
 }
 
 const mapStateToProps = (state: GlobalState) => ({

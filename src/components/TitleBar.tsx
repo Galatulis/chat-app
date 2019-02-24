@@ -1,8 +1,6 @@
 import React from "react";
 import injectSheet, { WithSheet } from "react-jss";
 
-import { createStyles } from "../utils";
-
 const TitleBar = ({ classes }: WithSheet<typeof styles>) => {
 	return (
 		<div className={classes.PanelTitle}>
@@ -12,7 +10,7 @@ const TitleBar = ({ classes }: WithSheet<typeof styles>) => {
 };
 
 function styles() {
-	return createStyles({
+	return {
 		PanelTitle: {
 			border: "1px solid #ddd",
 			borderRadius: "3px",
@@ -26,7 +24,7 @@ function styles() {
 			textAlign: "center",
 			textTransform: "lowercase"
 		}
-	});
+	};
 }
 
 export default injectSheet(styles)(TitleBar);

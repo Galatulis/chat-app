@@ -3,7 +3,6 @@ import injectSheet, { WithSheet } from "react-jss";
 import { connect } from "react-redux";
 
 import { GlobalState, User } from "../interfaces";
-import { createStyles } from "../utils";
 
 interface Props extends WithSheet<typeof styles> {
 	listOfUsers: User[];
@@ -22,7 +21,7 @@ const SideBar = ({ classes, listOfUsers }: Props) => {
 };
 
 function styles() {
-	return createStyles({
+	return {
 		SideBar: {
 			border: "1px solid #ddd",
 			borderRadius: "3px",
@@ -35,7 +34,7 @@ function styles() {
 			color: "#42b0f4",
 			textTransform: "uppercase"
 		}
-	});
+	};
 }
 
 const mapStateToProps = (state: GlobalState) => ({

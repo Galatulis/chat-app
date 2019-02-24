@@ -1,4 +1,4 @@
-import { actions } from "../store";
+import { actions } from "../actions";
 import { Action, Dispatch } from "../interfaces";
 
 const { addUser, addMessage, listUsers, receiveMessages } = actions;
