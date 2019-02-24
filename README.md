@@ -1,11 +1,10 @@
-<h1 align="center">chat-app</h1>
+<h1 align="center">GalaChat</h1>
 <p align="center">A simple chat app for learning.</p>
 
 ## Built With
 
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
-- [JSS](https://cssinjs.org/)
 - [WebSocket](https://github.com/websockets/ws)
 
 ## License

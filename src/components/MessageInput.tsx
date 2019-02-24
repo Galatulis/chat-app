@@ -3,8 +3,8 @@ import injectSheet, { WithSheet } from "react-jss";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 
-import setupSocket, { socket } from "../socket";
-import { actions } from "../store";
+import setupSocket, { socket } from "../services";
+import { actions } from "../actions";
 import { GlobalState } from "../interfaces";
 import { createStyles } from "../utils";
 

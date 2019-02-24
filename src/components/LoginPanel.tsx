@@ -3,7 +3,7 @@ import injectSheet, { WithSheet } from "react-jss";
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 
-import { actions } from "../store";
+import { actions } from "../actions";
 import { GlobalState } from "../interfaces";
 import { createStyles } from "../utils";
 
