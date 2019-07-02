@@ -6,9 +6,9 @@ import LoginPanel from "./LoginPanel";
 afterEach(cleanup);
 
 describe("LoginPanel", () => {
-	it("renders without crashing", () => {
-		const logIn = jest.fn();
+  it("renders without crashing", () => {
+    const logIn = jest.fn();
 
-		render(<LoginPanel logIn={logIn} />);
-	});
+    render(<LoginPanel logIn={logIn} />);
+  });
 });

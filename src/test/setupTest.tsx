@@ -6,11 +6,11 @@ import { ThemeProvider } from "react-jss";
 import store from "../store";
 
 const customRender = (node: JSX.Element) => {
-	return render(
-		<Provider store={store}>
-			<ThemeProvider theme={{}}>{node}</ThemeProvider>
-		</Provider>
-	);
+  return render(
+    <Provider store={store}>
+      <ThemeProvider theme={{}}>{node}</ThemeProvider>
+    </Provider>
+  );
 };
 
 export * from "react-testing-library";

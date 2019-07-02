@@ -6,7 +6,7 @@ import App from "./App";
 afterEach(cleanup);
 
 describe("App", () => {
-	it("renders without crashing", () => {
-		render(<App />);
-	});
+  it("renders without crashing", () => {
+    render(<App />);
+  });
 });

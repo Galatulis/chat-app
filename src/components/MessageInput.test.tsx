@@ -6,7 +6,7 @@ import MessageInput from "./MessageInput";
 afterEach(cleanup);
 
 describe("MessageInput", () => {
-	it("renders without crashing", () => {
-		render(<MessageInput />);
-	});
+  it("renders without crashing", () => {
+    render(<MessageInput />);
+  });
 });

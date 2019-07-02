@@ -9,10 +9,10 @@ import store from "./store";
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
-	<Provider store={store}>
-		<ThemeProvider theme={{}}>
-			<App />
-		</ThemeProvider>
-	</Provider>,
-	rootElement
+  <Provider store={store}>
+    <ThemeProvider theme={{}}>
+      <App />
+    </ThemeProvider>
+  </Provider>,
+  rootElement
 );

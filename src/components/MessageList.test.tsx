@@ -6,7 +6,7 @@ import MessageList from "./MessageList";
 afterEach(cleanup);
 
 describe("MessageList", () => {
-	it("renders without crashing", () => {
-		render(<MessageList />);
-	});
+  it("renders without crashing", () => {
+    render(<MessageList />);
+  });
 });

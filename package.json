@@ -1,40 +1,40 @@
 {
-	"name": "galachat",
-	"version": "0.1.0",
-	"private": true,
-	"dependencies": {
-		"react": "^16.8.3",
-		"react-dom": "^16.8.3",
-		"react-jss": "^8.6.1",
-		"react-redux": "^6.0.1",
-		"react-scripts": "^2.1.5",
-		"redux": "^4.0.1"
-	},
-	"devDependencies": {
-		"@types/jest": "^23.3.14",
-		"@types/node": "^10.12.27",
-		"@types/react": "^16.8.4",
-		"@types/react-dom": "^16.8.2",
-		"@types/react-jss": "^8.6.0",
-		"@types/react-redux": "^6.0.13",
-		"@typescript-eslint/eslint-plugin": "^1.4.1",
-		"@typescript-eslint/parser": "^1.4.1",
-		"eslint-config-prettier": "^4.0.0",
-		"eslint-plugin-jest": "^22.3.0",
-		"prettier": "^1.16.4",
-		"react-testing-library": "^6.0.0",
-		"typescript": "^3.3.3333"
-	},
-	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
-	},
-	"browserslist": [
-		">0.2%",
-		"not dead",
-		"not ie <= 11",
-		"not op_mini all"
-	]
+  "name": "galachat",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-jss": "^8.6.1",
+    "react-redux": "^6.0.1",
+    "react-scripts": "^2.1.5",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.14",
+    "@types/node": "^10.12.27",
+    "@types/react": "^16.8.4",
+    "@types/react-dom": "^16.8.2",
+    "@types/react-jss": "^8.6.0",
+    "@types/react-redux": "^6.0.13",
+    "@typescript-eslint/eslint-plugin": "^1.4.1",
+    "@typescript-eslint/parser": "^1.4.1",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-jest": "^22.3.0",
+    "prettier": "^1.16.4",
+    "react-testing-library": "^6.0.0",
+    "typescript": "^3.3.3333"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

@@ -6,7 +6,7 @@ import SideBar from "./SideBar";
 afterEach(cleanup);
 
 describe("SideBar", () => {
-	it("renders without crashing", () => {
-		render(<SideBar />);
-	});
+  it("renders without crashing", () => {
+    render(<SideBar />);
+  });
 });

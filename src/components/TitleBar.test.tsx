@@ -6,7 +6,7 @@ import TitleBar from "./TitleBar";
 afterEach(cleanup);
 
 describe("TitleBar", () => {
-	it("renders without crashing", () => {
-		render(<TitleBar />);
-	});
+  it("renders without crashing", () => {
+    render(<TitleBar />);
+  });
 });
