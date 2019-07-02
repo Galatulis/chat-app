@@ -1,19 +1,21 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useCallback, useState, ChangeEvent } from "react";
 import injectSheet, { WithSheet } from "react-jss";
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { actions } from "../actions";
-import { GlobalState } from "../interfaces";
+import actions from "../actions";
 
 interface Props extends WithSheet<typeof styles> {
-  currentUser: string;
   logIn: (_: string) => void;
-  setCurrentUser: (_: string) => void;
 }
 
-function LoginPanel({ classes, logIn, setCurrentUser }: Props) {
+function LoginPanel({ classes, logIn }: Props) {
   const [userName, setUserName] = useState<string>("");
+
+  const dispatch = useDispatch();
+  const setCurrentUser = useCallback(
+    (payload: string) => dispatch(actions.setCurrentUser(payload)),
+    [dispatch]
+  );
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
@@ -73,15 +75,4 @@ function styles() {
   };
 }
 
-const mapStateToProps = (state: GlobalState) => ({
-  currentUser: state.currentUser
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  setCurrentUser: (payload: string) => dispatch(actions.setCurrentUser(payload))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectSheet(styles)(LoginPanel));
+export default injectSheet(styles)(LoginPanel);

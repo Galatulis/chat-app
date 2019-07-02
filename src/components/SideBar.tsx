@@ -1,14 +1,14 @@
 import React from "react";
 import injectSheet, { WithSheet } from "react-jss";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { GlobalState, User } from "../interfaces";
+import { StoreState } from "../interfaces";
 
-interface Props extends WithSheet<typeof styles> {
-  listOfUsers: User[];
-}
+function SideBar({ classes }: WithSheet<typeof styles>) {
+  const listOfUsers = useSelector<StoreState, StoreState["listOfUsers"]>(
+    state => state.listOfUsers
+  );
 
-function SideBar({ classes, listOfUsers }: Props) {
   return (
     <div className={classes.SideBar}>
       {listOfUsers.map(user => (
@@ -37,8 +37,4 @@ function styles() {
   };
 }
 
-const mapStateToProps = (state: GlobalState) => ({
-  listOfUsers: state.listOfUsers
-});
-
-export default connect(mapStateToProps)(injectSheet(styles)(SideBar));
+export default injectSheet(styles)(SideBar);

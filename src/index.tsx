@@ -3,10 +3,8 @@ import ReactDOM from "react-dom";
 import { ThemeProvider } from "react-jss";
 import { Provider } from "react-redux";
 
-import App from "./App";
 import store from "./store";
-
-const rootElement = document.getElementById("root");
+import App from "./App";
 
 ReactDOM.render(
   <Provider store={store}>
@@ -14,5 +12,5 @@ ReactDOM.render(
       <App />
     </ThemeProvider>
   </Provider>,
-  rootElement
+  document.getElementById("root")
 );

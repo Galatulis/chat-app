@@ -1,14 +1,14 @@
 import React from "react";
 import injectSheet, { WithSheet } from "react-jss";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { GlobalState, Message } from "../interfaces";
+import { StoreState } from "../interfaces";
 
-interface Props extends WithSheet<typeof styles> {
-  listOfMessages: Message[];
-}
+function MessageList({ classes }: WithSheet<typeof styles>) {
+  const listOfMessages = useSelector<StoreState, StoreState["listOfMessages"]>(
+    state => state.listOfMessages
+  );
 
-function MessageList({ classes, listOfMessages }: Props) {
   return (
     <div className={classes.PanelMessage}>
       {listOfMessages.map(message => (
@@ -45,8 +45,4 @@ function styles() {
   };
 }
 
-const mapStateToProps = (state: GlobalState) => ({
-  listOfMessages: state.listOfMessages
-});
-
-export default connect(mapStateToProps)(injectSheet(styles)(MessageList));
+export default injectSheet(styles)(MessageList);

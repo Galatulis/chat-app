@@ -1,5 +1,5 @@
-export * from "./action";
+export * from "./actionTypes";
 
-export * from "./store";
+export * from "./storeTypes";
 
-export * from "./state";
+export * from "./stateTypes";

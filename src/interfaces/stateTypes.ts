@@ -9,7 +9,7 @@ export interface User {
   name: string;
 }
 
-export interface GlobalState {
+export interface StoreState {
   listOfUsers: User[];
   listOfMessages: Message[];
   currentUser: string;

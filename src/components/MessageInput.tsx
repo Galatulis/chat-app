@@ -1,27 +1,30 @@
-import React, { ChangeEvent, useEffect } from "react";
+import React, { ChangeEvent, useEffect, useCallback } from "react";
 import injectSheet, { WithSheet } from "react-jss";
-import { Dispatch } from "redux";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import setupSocket, { socket } from "../services";
-import { actions } from "../actions";
-import { GlobalState } from "../interfaces";
+import actions from "../actions";
+import { StoreState } from "../interfaces";
 
-interface Props extends WithSheet<typeof styles> {
-  currentUser: string;
-  currentMessage: string;
-  dispatch: (_: any) => void;
-  setCurrentMessage: (_: string) => void;
-}
+function MessageInput({ classes }: WithSheet<typeof styles>) {
+  const currentMessage = useSelector<StoreState, StoreState["currentMessage"]>(
+    state => state.currentMessage
+  );
+  const currentUser = useSelector<StoreState, StoreState["currentUser"]>(
+    state => state.currentUser
+  );
 
-function MessageInput(props: Props) {
+  const dispatch = useDispatch();
+  const setCurrentMessage = useCallback(
+    (payload: string) => dispatch(actions.setCurrentMessage(payload)),
+    [dispatch]
+  );
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { setCurrentMessage } = props;
     setCurrentMessage(event.target.value);
   };
 
   const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
-    const { currentUser, currentMessage, setCurrentMessage } = props;
     event.preventDefault();
     socket.send(
       JSON.stringify({
@@ -36,13 +39,11 @@ function MessageInput(props: Props) {
   };
 
   useEffect(() => {
-    const { dispatch, currentUser } = props;
     setupSocket(dispatch, currentUser);
 
     return () => {};
-  });
+  }, [dispatch, currentUser]);
 
-  const { classes, currentMessage } = props;
   return (
     <form className={classes.PanelControl} onSubmit={handleSubmit}>
       <input
@@ -88,18 +89,4 @@ function styles() {
   };
 }
 
-const mapStateToProps = (state: GlobalState) => ({
-  currentMessage: state.currentMessage,
-  currentUser: state.currentUser
-});
-
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  dispatch,
-  setCurrentMessage: (payload: string) =>
-    dispatch(actions.setCurrentMessage(payload))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(injectSheet(styles)(MessageInput));
+export default injectSheet(styles)(MessageInput);

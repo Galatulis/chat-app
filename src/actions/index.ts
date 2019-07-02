@@ -1,28 +1,30 @@
-import { Action, Message, User } from "../interfaces";
+import { Action, ActionType, Message, User } from "../interfaces";
 
-export const actions = {
+const actions = {
   addMessage: (payload: Message): Action => ({
     payload,
-    type: "ADD_MESSAGE"
+    type: ActionType.ADD_MESSAGE
   }),
   addUser: (payload: User): Action => ({
     payload,
-    type: "ADD_USER"
+    type: ActionType.ADD_USER
   }),
   listUsers: (payload: User[]): Action => ({
     payload,
-    type: "LIST_USERS"
+    type: ActionType.LIST_USERS
   }),
   receiveMessages: (payload: Message): Action => ({
     payload,
-    type: "RECEIVE_MESSAGES"
+    type: ActionType.RECEIVE_MESSAGES
   }),
   setCurrentMessage: (payload: string): Action => ({
     payload,
-    type: "SET_CURRENT_MESSAGE"
+    type: ActionType.SET_CURRENT_MESSAGE
   }),
   setCurrentUser: (payload: string): Action => ({
     payload,
-    type: "SET_CURRENT_USER"
+    type: ActionType.SET_CURRENT_USER
   })
 };
+
+export default actions;

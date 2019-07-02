@@ -1,9 +1,10 @@
-import { actions } from "../actions";
+import actions from "../actions";
 import { Action, Dispatch } from "../interfaces";
 
 const { addUser, addMessage, listUsers, receiveMessages } = actions;
 
 export const socket = new WebSocket(
+  // eslint-disable-next-line no-undef
   `wss://${process.env.REACT_APP_DOMAIN || "localhost"}:${process.env
     .REACT_APP_PORT || 4000}`
 );

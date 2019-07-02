@@ -1,6 +1,6 @@
-import { Action, GlobalState } from "../interfaces";
+import { Action, StoreState } from "../interfaces";
 
-export const initialState: GlobalState = {
+export const initialState: StoreState = {
   currentMessage: "",
   currentUser: "",
   listOfMessages: [],
@@ -8,9 +8,9 @@ export const initialState: GlobalState = {
 };
 
 export const reducers = (
-  state: GlobalState = initialState,
+  state: StoreState = initialState,
   action: Action
-): GlobalState => {
+): StoreState => {
   switch (action.type) {
     case "ADD_MESSAGE":
     case "RECEIVE_MESSAGES":
