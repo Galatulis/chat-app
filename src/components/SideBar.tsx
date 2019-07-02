@@ -10,19 +10,19 @@ function SideBar({ classes }: WithSheet<typeof styles>) {
   );
 
   return (
-    <div className={classes.SideBar}>
+    <aside className={classes.sideBar}>
       {listOfUsers.map(user => (
-        <p key={user.id} className={classes.TextUser}>
+        <p key={user.id} className={classes.textUser}>
           {user.name}
         </p>
       ))}
-    </div>
+    </aside>
   );
 }
 
 function styles() {
   return {
-    SideBar: {
+    sideBar: {
       border: "1px solid #ddd",
       borderRadius: "3px",
       boxShadow: "1px 3px 5px rgba(0,0,0,0.2)",
@@ -30,7 +30,7 @@ function styles() {
       overflow: "auto",
       padding: "10px 20px"
     },
-    TextUser: {
+    textUser: {
       color: "#42b0f4",
       textTransform: "uppercase"
     }

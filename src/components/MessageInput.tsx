@@ -40,26 +40,24 @@ function MessageInput({ classes }: WithSheet<typeof styles>) {
 
   useEffect(() => {
     setupSocket(dispatch, currentUser);
-
-    return () => {};
   }, [dispatch, currentUser]);
 
   return (
-    <form className={classes.PanelControl} onSubmit={handleSubmit}>
+    <form className={classes.panelControl} onSubmit={handleSubmit}>
       <input
-        className={classes.InputMessage}
+        className={classes.inputMessage}
         onChange={handleChange}
         value={currentMessage}
         type="text"
       />
-      <button className={classes.ButtonSend}>Send</button>
+      <button className={classes.buttonSend}>Send</button>
     </form>
   );
 }
 
 function styles() {
   return {
-    ButtonSend: {
+    buttonSend: {
       background: "#42b0f4",
       border: "2px solid #42b0f4",
       borderRadius: "0 0 4px 4px",
@@ -68,17 +66,15 @@ function styles() {
       padding: "5px 0",
       width: "100%"
     },
-    InputMessage: {
+    inputMessage: {
       background: "#fff",
       border: "0px",
-      borderBottom: "1px solid #eee",
-      boxSizing: "border-box",
       color: "#555",
       fontSize: "16px",
       padding: "20px 20px",
       width: "100%"
     },
-    PanelControl: {
+    panelControl: {
       border: "1px solid #ddd",
       borderRadius: "3px",
       boxShadow: "1px 3px 5px rgba(0,0,0,0.2)",

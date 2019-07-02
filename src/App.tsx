@@ -27,24 +27,46 @@ function App({ classes }: WithSheet<typeof styles>) {
   };
 
   useEffect(() => {
-    document.title = "Chat App";
-  });
+    document.title = "GalaChat";
+  }, []);
 
-  return !loggedIn ? (
-    <LoginPanel logIn={logIn} />
-  ) : (
-    <div className={classes.GridContainer}>
-      <TitleBar />
-      <SideBar />
-      <MessageList />
-      <MessageInput />
+  return (
+    <div className={classes.flexContainer}>
+      {!loggedIn ? (
+        <LoginPanel logIn={logIn} />
+      ) : (
+        <div className={classes.gridContainer}>
+          <TitleBar />
+          <SideBar />
+          <MessageList />
+          <MessageInput />
+        </div>
+      )}
     </div>
   );
 }
 
 function styles() {
   return {
-    GridContainer: {
+    "@global": {
+      "body": {
+        margin: "0px",
+        padding: "0px"
+      },
+      "*, *::before, *::after": {
+        boxSizing: "border-box"
+      },
+      "#root": {
+        height: "100vh"
+      }
+    },
+    "flexContainer": {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100%"
+    },
+    "gridContainer": {
       display: "grid",
       gridGap: "10px",
       gridTemplateAreas:
@@ -52,7 +74,7 @@ function styles() {
       gridTemplateColumns: "minmax(50px, 150px) minmax(50px, 450px)",
       gridTemplateRows:
         "minmax(50px, 100px) minmax(50px, 400px) minmax(50px, 100px)",
-      margin: "auto",
+      margin: "0px",
       maxWidth: "600px"
     }
   };

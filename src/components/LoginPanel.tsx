@@ -30,21 +30,21 @@ function LoginPanel({ classes, logIn }: Props) {
   };
 
   return (
-    <form className={classes.PanelLogin} onSubmit={handleSubmit}>
+    <form className={classes.panelLogin} onSubmit={handleSubmit}>
       <input
-        className={classes.InputUserName}
+        className={classes.inputUserName}
         onChange={handleChange}
         value={userName}
         type="text"
       />
-      <button className={classes.ButtonLogin}>Login</button>
+      <button className={classes.buttonLogin}>Login</button>
     </form>
   );
 }
 
 function styles() {
   return {
-    ButtonLogin: {
+    buttonLogin: {
       background: "#42b0f4",
       border: "2px solid #42b0f4",
       borderRadius: "0 0 4px 4px",
@@ -53,10 +53,9 @@ function styles() {
       padding: "5px 0",
       width: "100%"
     },
-    InputUserName: {
+    inputUserName: {
       background: "#fff",
       border: "0px",
-      borderBottom: "1px solid #eee",
       boxSizing: "border-box",
       color: "#555",
       fontSize: "16px",
@@ -64,13 +63,10 @@ function styles() {
       textAlign: "center",
       width: "100%"
     },
-    PanelLogin: {
+    panelLogin: {
       border: "1px solid #ddd",
       borderRadius: "3px",
-      boxShadow: "1px 3px 5px rgba(0,0,0,0.2)",
-      display: "grid",
-      margin: "30vh auto",
-      maxWidth: "400px"
+      boxShadow: "1px 3px 5px rgba(0,0,0,0.2)"
     }
   };
 }
