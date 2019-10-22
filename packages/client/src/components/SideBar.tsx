@@ -1,10 +1,10 @@
 import React from "react";
-import injectSheet, { WithSheet } from "react-jss";
+import injectSheet, { WithStyles } from "react-jss";
 import { useSelector } from "react-redux";
 
 import { StoreState } from "../interfaces";
 
-function SideBar({ classes }: WithSheet<typeof styles>) {
+function SideBar({ classes }: WithStyles<typeof styles>) {
   const listOfUsers = useSelector<StoreState, StoreState["listOfUsers"]>(
     state => state.listOfUsers
   );

@@ -1,10 +1,10 @@
 import React, { useCallback, useState, ChangeEvent } from "react";
-import injectSheet, { WithSheet } from "react-jss";
+import injectSheet, { WithStyles } from "react-jss";
 import { useDispatch } from "react-redux";
 
 import actions from "../actions";
 
-interface Props extends WithSheet<typeof styles> {
+interface Props extends WithStyles<typeof styles> {
   logIn: (_: string) => void;
 }
 

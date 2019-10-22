@@ -1,12 +1,12 @@
 import React, { ChangeEvent, useEffect, useCallback } from "react";
-import injectSheet, { WithSheet } from "react-jss";
+import injectSheet, { WithStyles } from "react-jss";
 import { useDispatch, useSelector } from "react-redux";
 
 import setupSocket, { socket } from "../services";
 import actions from "../actions";
 import { StoreState } from "../interfaces";
 
-function MessageInput({ classes }: WithSheet<typeof styles>) {
+function MessageInput({ classes }: WithStyles<typeof styles>) {
   const currentMessage = useSelector<StoreState, StoreState["currentMessage"]>(
     state => state.currentMessage
   );

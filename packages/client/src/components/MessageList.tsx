@@ -1,10 +1,10 @@
 import React from "react";
-import injectSheet, { WithSheet } from "react-jss";
+import injectSheet, { WithStyles } from "react-jss";
 import { useSelector } from "react-redux";
 
 import { StoreState } from "../interfaces";
 
-function MessageList({ classes }: WithSheet<typeof styles>) {
+function MessageList({ classes }: WithStyles<typeof styles>) {
   const listOfMessages = useSelector<StoreState, StoreState["listOfMessages"]>(
     state => state.listOfMessages
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "react-jss";
 
@@ -15,4 +15,4 @@ const customRender = (node: JSX.Element) => {
 
 export * from "@testing-library/react";
 
-export { customRender as render };
+export { customRender as render, cleanup };

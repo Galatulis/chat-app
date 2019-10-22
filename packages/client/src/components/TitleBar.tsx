@@ -1,7 +1,7 @@
 import React from "react";
-import injectSheet, { WithSheet } from "react-jss";
+import injectSheet, { WithStyles } from "react-jss";
 
-function TitleBar({ classes }: WithSheet<typeof styles>) {
+function TitleBar({ classes }: WithStyles<typeof styles>) {
   return (
     <header className={classes.panelTitle}>
       <p className={classes.textTitle}>GalaChat</p>
