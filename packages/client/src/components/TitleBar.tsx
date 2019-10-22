@@ -1,7 +1,11 @@
 import React from "react";
-import injectSheet, { WithStyles } from "react-jss";
+import { createUseStyles } from "react-jss";
 
-function TitleBar({ classes }: WithStyles<typeof styles>) {
+const useStyles = createUseStyles(styles());
+
+function TitleBar() {
+  const classes = useStyles();
+
   return (
     <header className={classes.panelTitle}>
       <p className={classes.textTitle}>GalaChat</p>
@@ -26,4 +30,4 @@ function styles() {
   };
 }
 
-export default injectSheet(styles)(TitleBar);
+export default TitleBar;

@@ -1,10 +1,14 @@
 import React from "react";
-import injectSheet, { WithStyles } from "react-jss";
+import { createUseStyles } from "react-jss";
 import { useSelector } from "react-redux";
 
 import { StoreState } from "../interfaces";
 
-function SideBar({ classes }: WithStyles<typeof styles>) {
+const useStyles = createUseStyles(styles());
+
+function SideBar() {
+  const classes = useStyles();
+
   const listOfUsers = useSelector<StoreState, StoreState["listOfUsers"]>(
     state => state.listOfUsers
   );
@@ -37,4 +41,4 @@ function styles() {
   };
 }
 
-export default injectSheet(styles)(SideBar);
+export default SideBar;

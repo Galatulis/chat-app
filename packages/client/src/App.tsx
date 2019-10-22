@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import injectSheet, { WithStyles } from "react-jss";
+import { createUseStyles } from "react-jss";
 
 import { socket } from "./services";
 import {
@@ -10,8 +10,11 @@ import {
   TitleBar
 } from "./components";
 
-function App({ classes }: WithStyles<typeof styles>) {
+const useStyles = createUseStyles(styles());
+
+function App() {
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const classes = useStyles();
 
   const logIn = (name: string) => {
     setLoggedIn(true);
@@ -80,4 +83,4 @@ function styles() {
   };
 }
 
-export default injectSheet(styles)(App);
+export default App;

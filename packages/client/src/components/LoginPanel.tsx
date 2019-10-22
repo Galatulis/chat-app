@@ -1,15 +1,18 @@
 import React, { useCallback, useState, ChangeEvent } from "react";
-import injectSheet, { WithStyles } from "react-jss";
+import { createUseStyles } from "react-jss";
 import { useDispatch } from "react-redux";
 
 import actions from "../actions";
 
-interface Props extends WithStyles<typeof styles> {
-  logIn: (_: string) => void;
+const useStyles = createUseStyles(styles());
+
+interface Props {
+  logIn(_: string): void;
 }
 
-function LoginPanel({ classes, logIn }: Props) {
+function LoginPanel({ logIn }: Props) {
   const [userName, setUserName] = useState<string>("");
+  const classes = useStyles();
 
   const dispatch = useDispatch();
   const setCurrentUser = useCallback(
@@ -71,4 +74,4 @@ function styles() {
   };
 }
 
-export default injectSheet(styles)(LoginPanel);
+export default LoginPanel;

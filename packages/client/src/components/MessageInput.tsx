@@ -1,12 +1,16 @@
 import React, { ChangeEvent, useEffect, useCallback } from "react";
-import injectSheet, { WithStyles } from "react-jss";
+import { createUseStyles } from "react-jss";
 import { useDispatch, useSelector } from "react-redux";
 
 import setupSocket, { socket } from "../services";
 import actions from "../actions";
 import { StoreState } from "../interfaces";
 
-function MessageInput({ classes }: WithStyles<typeof styles>) {
+const useStyles = createUseStyles(styles());
+
+function MessageInput() {
+  const classes = useStyles();
+
   const currentMessage = useSelector<StoreState, StoreState["currentMessage"]>(
     state => state.currentMessage
   );
@@ -85,4 +89,4 @@ function styles() {
   };
 }
 
-export default injectSheet(styles)(MessageInput);
+export default MessageInput;
