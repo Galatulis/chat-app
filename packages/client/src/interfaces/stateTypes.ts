@@ -14,4 +14,5 @@ export interface StoreState {
   listOfMessages: Message[];
   currentUser: string;
   currentMessage: string;
+  isLoggedIn: boolean;
 }

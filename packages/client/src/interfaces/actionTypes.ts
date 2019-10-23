@@ -1,4 +1,4 @@
-import { StoreState, Message, User } from "./stateTypes";
+import { Message, User } from "./stateTypes";
 
 export enum ActionType {
   ADD_MESSAGE = "ADD_MESSAGE",
@@ -6,7 +6,8 @@ export enum ActionType {
   ADD_USER = "ADD_USER",
   LIST_USERS = "LIST_USERS",
   SET_CURRENT_USER = "SET_CURRENT_USER",
-  SET_CURRENT_MESSAGE = "SET_CURRENT_MESSAGE"
+  SET_CURRENT_MESSAGE = "SET_CURRENT_MESSAGE",
+  SET_LOGIN_USER = "SET_LOGIN_USER"
 }
 
 export type Action =
@@ -33,12 +34,8 @@ export type Action =
   | {
       type: ActionType.SET_CURRENT_MESSAGE;
       payload: string;
+    }
+  | {
+      type: ActionType.SET_LOGIN_USER;
+      payload: boolean;
     };
-
-export type Dispatch = (action: Action | ThunkAction | PromiseAction) => void;
-
-export type GetState = () => StoreState;
-
-export type ThunkAction = (dispatch: Dispatch, getState: GetState) => void;
-
-export type PromiseAction = Promise<Action>;

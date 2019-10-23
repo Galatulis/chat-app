@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { createUseStyles } from "react-jss";
+import { useSelector } from "react-redux";
 
-import { socket } from "./services";
 import {
   LoginPanel,
   MessageInput,
@@ -9,25 +9,16 @@ import {
   SideBar,
   TitleBar
 } from "./components";
+import { StoreState } from "./interfaces";
 
 const useStyles = createUseStyles(styles());
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const classes = useStyles();
 
-  const logIn = (name: string) => {
-    setLoggedIn(true);
-
-    socket.send(
-      JSON.stringify({
-        payload: {
-          name
-        },
-        type: "ADD_USER"
-      })
-    );
-  };
+  const isLoggedIn = useSelector<StoreState, boolean>(
+    state => state.isLoggedIn
+  );
 
   useEffect(() => {
     document.title = "GalaChat";
@@ -35,8 +26,8 @@ function App() {
 
   return (
     <div className={classes.flexContainer}>
-      {!loggedIn ? (
-        <LoginPanel logIn={logIn} />
+      {!isLoggedIn ? (
+        <LoginPanel />
       ) : (
         <div className={classes.gridContainer}>
           <TitleBar />

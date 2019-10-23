@@ -3,18 +3,19 @@ import { createUseStyles } from "react-jss";
 import { useDispatch } from "react-redux";
 
 import actions from "../actions";
+import { socket } from "../services";
 
 const useStyles = createUseStyles(styles());
 
-interface Props {
-  logIn(_: string): void;
-}
-
-function LoginPanel({ logIn }: Props) {
+function LoginPanel() {
   const [userName, setUserName] = useState<string>("");
   const classes = useStyles();
 
   const dispatch = useDispatch();
+  const setLoginUser = useCallback(
+    (payload: boolean) => dispatch(actions.setLoginUser(payload)),
+    [dispatch]
+  );
   const setCurrentUser = useCallback(
     (payload: string) => dispatch(actions.setCurrentUser(payload)),
     [dispatch]
@@ -28,7 +29,16 @@ function LoginPanel({ logIn }: Props) {
     event.preventDefault();
     if (userName !== "") {
       setCurrentUser(userName);
-      logIn(userName);
+      setLoginUser(true);
+
+      socket.send(
+        JSON.stringify({
+          payload: {
+            name: userName
+          },
+          type: "ADD_USER"
+        })
+      );
     }
   };
 

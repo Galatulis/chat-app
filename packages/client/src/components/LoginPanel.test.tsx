@@ -7,8 +7,6 @@ afterEach(cleanup);
 
 describe("LoginPanel", () => {
   it("renders without crashing", () => {
-    const logIn = jest.fn();
-
-    render(<LoginPanel logIn={logIn} />);
+    render(<LoginPanel />);
   });
 });

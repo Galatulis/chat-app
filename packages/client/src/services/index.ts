@@ -1,5 +1,7 @@
+import { Dispatch } from "redux";
+
 import actions from "../actions";
-import { Action, Dispatch } from "../interfaces";
+import { Action } from "../interfaces";
 
 const { addUser, addMessage, listUsers, receiveMessages } = actions;
 
@@ -9,7 +11,7 @@ export const socket = new WebSocket(
     .REACT_APP_PORT || 4000}`
 );
 
-const setupSocket = (dispatch: Dispatch, name: string) => {
+export default function setupSocket(dispatch: Dispatch, name: string) {
   socket.onopen = () => {
     socket.send(
       JSON.stringify({
@@ -52,6 +54,4 @@ const setupSocket = (dispatch: Dispatch, name: string) => {
     }
   };
   return socket;
-};
-
-export default setupSocket;
+}

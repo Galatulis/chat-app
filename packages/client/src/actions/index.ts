@@ -24,6 +24,10 @@ const actions = {
   setCurrentUser: (payload: string): Action => ({
     payload,
     type: ActionType.SET_CURRENT_USER
+  }),
+  setLoginUser: (payload: boolean): Action => ({
+    payload,
+    type: ActionType.SET_LOGIN_USER
   })
 };
 
