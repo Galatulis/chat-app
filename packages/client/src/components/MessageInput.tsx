@@ -2,8 +2,8 @@ import React, { ChangeEvent, useEffect, useCallback } from "react";
 import { createUseStyles } from "react-jss";
 import { useDispatch, useSelector } from "react-redux";
 
-import setupSocket, { socket } from "../services";
-import actions from "../actions";
+import { setupSocket, socket } from "../services";
+import * as actions from "../actions";
 import { StoreState } from "../interfaces";
 
 const useStyles = createUseStyles(styles());
@@ -11,12 +11,14 @@ const useStyles = createUseStyles(styles());
 function MessageInput() {
   const classes = useStyles();
 
-  const currentMessage = useSelector<StoreState, StoreState["currentMessage"]>(
-    state => state.currentMessage
-  );
-  const currentUser = useSelector<StoreState, StoreState["currentUser"]>(
-    state => state.currentUser
-  );
+  const currentMessage = useSelector<
+    StoreState,
+    StoreState["user"]["currentUser"]
+  >(state => state.message.currentMessage);
+  const currentUser = useSelector<
+    StoreState,
+    StoreState["user"]["currentUser"]
+  >(state => state.user.currentUser);
 
   const dispatch = useDispatch();
   const setCurrentMessage = useCallback(

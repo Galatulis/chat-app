@@ -9,9 +9,10 @@ const useStyles = createUseStyles(styles());
 function MessageList() {
   const classes = useStyles();
 
-  const listOfMessages = useSelector<StoreState, StoreState["listOfMessages"]>(
-    state => state.listOfMessages
-  );
+  const listOfMessages = useSelector<
+    StoreState,
+    StoreState["message"]["listOfMessages"]
+  >(state => state.message.listOfMessages);
 
   return (
     <main className={classes.panelMessage}>

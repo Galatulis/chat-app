@@ -16,8 +16,8 @@ const useStyles = createUseStyles(styles());
 function App() {
   const classes = useStyles();
 
-  const isLoggedIn = useSelector<StoreState, boolean>(
-    state => state.isLoggedIn
+  const isLoggedIn = useSelector<StoreState, StoreState["user"]["isLoggedIn"]>(
+    state => state.user.isLoggedIn
   );
 
   useEffect(() => {

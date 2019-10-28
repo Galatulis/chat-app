@@ -1,2 +1,2 @@
-export * from "./actionTypes";
-export * from "./stateTypes";
+export * from "./action.types";
+export * from "./state.types";

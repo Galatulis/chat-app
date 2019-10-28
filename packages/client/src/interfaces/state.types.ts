@@ -9,10 +9,18 @@ export interface User {
   name: string;
 }
 
-export interface StoreState {
-  listOfUsers: User[];
+export interface MessageState {
   listOfMessages: Message[];
-  currentUser: string;
   currentMessage: string;
+}
+
+export interface UserState {
+  listOfUsers: User[];
+  currentUser: string;
   isLoggedIn: boolean;
+}
+
+export interface StoreState {
+  message: MessageState;
+  user: UserState;
 }

@@ -9,9 +9,10 @@ const useStyles = createUseStyles(styles());
 function SideBar() {
   const classes = useStyles();
 
-  const listOfUsers = useSelector<StoreState, StoreState["listOfUsers"]>(
-    state => state.listOfUsers
-  );
+  const listOfUsers = useSelector<
+    StoreState,
+    StoreState["user"]["listOfUsers"]
+  >(state => state.user.listOfUsers);
 
   return (
     <aside className={classes.sideBar}>

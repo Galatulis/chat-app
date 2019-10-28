@@ -1,4 +1,4 @@
-import { Message, User } from "./stateTypes";
+import { Message, User } from "./state.types";
 
 export enum ActionType {
   ADD_MESSAGE = "ADD_MESSAGE",

@@ -2,7 +2,7 @@ import React, { useCallback, useState, ChangeEvent } from "react";
 import { createUseStyles } from "react-jss";
 import { useDispatch } from "react-redux";
 
-import actions from "../actions";
+import * as actions from "../actions";
 import { socket } from "../services";
 
 const useStyles = createUseStyles(styles());
