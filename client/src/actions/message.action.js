@@ -1,4 +1,4 @@
-import { ActionType } from "./index";
+import { ActionType } from ".";
 
 export function addMessage(payload) {
   return {

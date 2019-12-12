@@ -9,7 +9,7 @@ export const socket = new WebSocket(
 );
 
 export function setupSocket(dispatch, name) {
-  socket.onopen = () => {
+  socket.addEventListener("open", () => {
     socket.send(
       JSON.stringify({
         payload: {
@@ -18,8 +18,8 @@ export function setupSocket(dispatch, name) {
         type: "ADD_USER",
       })
     );
-  };
-  socket.onmessage = event => {
+  });
+  socket.addEventListener("message", event => {
     const action = JSON.parse(String(event.data));
     switch (action.type) {
       case "ADD_MESSAGE":
@@ -49,6 +49,6 @@ export function setupSocket(dispatch, name) {
       default:
         break;
     }
-  };
+  });
   return socket;
 }

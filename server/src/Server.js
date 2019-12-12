@@ -2,6 +2,14 @@ import express from "express";
 import * as http from "http";
 import WebSocket from "ws";
 
+function broadcast(data, ws) {
+  this.wss.clients.forEach(client => {
+    if (client.readyState === WebSocket.OPEN && client !== ws) {
+      client.send(JSON.stringify(data));
+    }
+  });
+}
+
 export default class Server {
   constructor(...middleware) {
     this.middleware = middleware;
@@ -15,20 +23,12 @@ export default class Server {
       this.app.use(this.middleware);
     }
 
-    const broadcast = (data, ws) => {
-      this.wss.clients.forEach(client => {
-        if (client.readyState === WebSocket.OPEN && client !== ws) {
-          client.send(JSON.stringify(data));
-        }
-      });
-    };
-
     this.wss.on("connection", ws => {
       let lastUsersIndex;
       let lastMessagesId;
 
-      ws.on("message", req => {
-        const data = JSON.parse(req);
+      ws.on("message", request => {
+        const data = JSON.parse(request);
         switch (data.type) {
           case "ADD_MESSAGE": {
             lastMessagesId = this.listOfMessages.length;
