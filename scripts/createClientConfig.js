@@ -10,13 +10,14 @@ import {
   fileLoader,
   postcssLoader
 } from "./loaderConfig";
-import { packagesDir, buildDir } from "../../utils/getDirPath";
+import { clientDirectory, buildDirectory } from "./getDirectoryPath";
 
 function getPlugins(isDevelopment) {
   const plugins = [
     new HtmlWebpackPlugin({
-      template: path.join(packagesDir, "client", "public", "index.html"),
-      filename: "index.html"
+      template: path.join(clientDirectory, "public", "index.html"),
+      filename: "index.html",
+      minify: !isDevelopment
     }),
     new FriendlyErrorsWebpackPlugin(),
     new DotenvWebpackPlugin()
@@ -34,7 +35,7 @@ export default function createConfig(isDevelopment) {
     mode: isDevelopment ? "development" : "production",
     target: "web",
     devtool: isDevelopment ? "inline-source-map" : undefined,
-    entry: path.join(packagesDir, "client", "src", "index.js"),
+    entry: [path.join(clientDirectory, "src", "index.js")],
     module: {
       rules: [eslintLoader, babelLoader, postcssLoader, fileLoader]
     },
@@ -42,10 +43,22 @@ export default function createConfig(isDevelopment) {
       extensions: [".js", ".json"]
     },
     output: {
-      filename: "bundle.js",
-      path: path.join(buildDir, "client")
+      filename: isDevelopment ? "[name].[hash].js" : "[name].[contenthash].js",
+      path: path.join(buildDirectory, "client")
     },
     watch: isDevelopment,
+    optimization: {
+      runtimeChunk: "single",
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendors",
+            chunks: "all"
+          }
+        }
+      }
+    },
     plugins: getPlugins(isDevelopment)
   };
 }

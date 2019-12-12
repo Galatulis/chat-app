@@ -4,13 +4,10 @@ module.exports = {
       displayName: "client",
       testEnvironment: "jsdom",
       testMatch: [
-        "<rootDir>/packages/client/src/**/__tests__/**/*.js",
-        "<rootDir>/packages/client/src/**/?(*.)(spec|test).js"
+        "<rootDir>/client/src/**/__tests__/**/*.js",
+        "<rootDir>/client/src/**/?(*.)(spec|test).js"
       ],
-      moduleDirectories: [
-        "node_modules",
-        "<rootDir>/packages/client/node_modules"
-      ],
+      moduleDirectories: ["node_modules", "<rootDir>/client/node_modules"],
       moduleNameMapper: {
         "^.+\\.css$": "identity-obj-proxy"
       },
@@ -23,24 +20,21 @@ module.exports = {
         "[/\\\\]node_modules[/\\\\].+\\.js$",
         "^.+\\.css$"
       ],
-      collectCoverageFrom: ["<rootDir>/packages/client/**/*.js"]
+      collectCoverageFrom: ["<rootDir>/client/**/*.js"]
     },
     {
       displayName: "server",
       testEnvironment: "node",
       testMatch: [
-        "<rootDir>/packages/server/src/**/__tests__/**/*.js",
-        "<rootDir>/packages/server/src/**/?(*.)(spec|test).js"
+        "<rootDir>/server/src/**/__tests__/**/*.js",
+        "<rootDir>/server/src/**/?(*.)(spec|test).js"
       ],
-      moduleDirectories: [
-        "node_modules",
-        "<rootDir>/packages/server/node_modules"
-      ],
+      moduleDirectories: ["node_modules", "<rootDir>/server/node_modules"],
       transform: {
         "^.+\\.js$": "babel-jest"
       },
       transformIgnorePatterns: ["[/\\\\]node_modules[/\\\\].+\\.js$"],
-      collectCoverageFrom: ["<rootDir>/packages/server/**/*.js"]
+      collectCoverageFrom: ["<rootDir>/server/**/*.js"]
     }
   ]
 };

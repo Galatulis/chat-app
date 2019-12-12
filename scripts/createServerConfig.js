@@ -3,28 +3,28 @@ import FriendlyErrorsWebpackPlugin from "friendly-errors-webpack-plugin";
 import path from "path";
 
 import { babelLoader, eslintLoader } from "./loaderConfig";
-import { buildDir, packagesDir } from "../../utils/getDirPath";
+import { buildDirectory, serverDirectory } from "./getDirectoryPath";
 
 export default function createConfig(isDevelopment) {
   return {
     mode: isDevelopment ? "development" : "production",
     target: "node",
     devtool: isDevelopment ? "inline-source-map" : undefined,
-    entry: `${packagesDir}/server/src/index`,
+    entry: path.join(serverDirectory, "src", "index.js"),
     externals: [
       nodeExternals({
-        modulesDir: path.join(packagesDir, "server", "node_modules")
+        modulesDir: path.join(serverDirectory, "node_modules")
       })
     ],
     module: {
       rules: [eslintLoader, babelLoader]
     },
     resolve: {
-      extensions: [".js", ".json"]
+      extensions: ["*", ".js", ".json"]
     },
     output: {
       filename: "index.js",
-      path: path.join(buildDir, "server")
+      path: path.join(buildDirectory, "server")
     },
     watch: isDevelopment,
     plugins: [new FriendlyErrorsWebpackPlugin()]

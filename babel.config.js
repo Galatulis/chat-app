@@ -6,11 +6,11 @@ module.exports = {
   ],
   overrides: [
     {
-      test: ["packages/client/**/*.js"],
+      test: ["client/**/*.js"],
       presets: ["@babel/preset-react"]
     },
     {
-      test: ["packages/server/**/*.js"],
+      test: ["server/**/*.js"],
       presets: [["@babel/preset-env", { targets: { node: true } }]],
       plugins: [
         "babel-plugin-transform-typescript-metadata",

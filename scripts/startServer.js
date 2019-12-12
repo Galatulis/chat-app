@@ -1,12 +1,15 @@
 import webpack from "webpack";
 import webpackDevMiddleware from "webpack-dev-middleware";
+import dotenv from "dotenv";
 
-import createConfig from "./config/createConfig";
-import Server from "../../packages/server/src/Server";
+import createConfig from "./createServerConfig";
+import Server from "../server/src/Server";
+
+dotenv.config();
 
 const compiler = webpack(createConfig(true));
 
-const devServer = new Server(
+const developmentServer = new Server(
   webpackDevMiddleware(compiler, {
     logLevel: "silent",
     publicPath: "",
@@ -16,4 +19,6 @@ const devServer = new Server(
   })
 );
 
-devServer.start();
+const port = parseInt(process.env.SERVER_PORT);
+
+developmentServer.start(port);

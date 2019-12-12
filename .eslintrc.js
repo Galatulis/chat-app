@@ -23,7 +23,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["packages/client/src/**"],
+      files: ["client/src/**"],
       env: {
         browser: true,
         node: false
