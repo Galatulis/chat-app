@@ -18,7 +18,7 @@ function App() {
   const isLoggedIn = useSelector(state => state.user.isLoggedIn);
 
   useEffect(() => {
-    document.title = "GalaChat";
+    document.title = "Lambe";
   }, []);
 
   return (

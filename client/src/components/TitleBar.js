@@ -8,7 +8,7 @@ function TitleBar() {
 
   return (
     <header className={classes.panelTitle}>
-      <p className={classes.textTitle}>GalaChat</p>
+      <p className={classes.textTitle}>Lambe</p>
     </header>
   );
 }
