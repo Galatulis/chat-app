@@ -1,12 +1,10 @@
-<h1 align="center">GalaChat</h1>
-<p align="center">A simple chat app for learning.</p>
+# Lambe
 
-## Built With
-
-- [React](https://reactjs.org/)
-- [Redux](https://redux.js.org/)
-- [WebSocket](https://github.com/websockets/ws)
+A simple chat app for learning and fun.
 
 ## License
 
-This project is licensed under the CC0 License - see the [LICENSE](LICENSE) file for details
+This project is released under GNU General Public License.
+See [LICENSE](LICENSE) for details.
+
+&copy; 2018 &mdash; Ananda Umamil
