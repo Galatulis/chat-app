@@ -2,7 +2,7 @@ import { ActionType } from "../actions";
 
 const initialState = {
   currentMessage: "",
-  listOfMessages: []
+  listOfMessages: [],
 };
 
 export function messageReducer(state = initialState, action) {
@@ -11,7 +11,7 @@ export function messageReducer(state = initialState, action) {
     case ActionType.RECEIVE_MESSAGES:
       return {
         ...state,
-        listOfMessages: [...state.listOfMessages, action.payload]
+        listOfMessages: [...state.listOfMessages, action.payload],
       };
     case ActionType.SET_CURRENT_MESSAGE:
       return { ...state, currentMessage: action.payload };

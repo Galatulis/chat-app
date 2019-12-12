@@ -2,11 +2,11 @@ module.exports = {
   root: true,
   env: {
     es6: true,
-    node: true
+    node: true,
   },
   globals: {
     Atomics: "readonly",
-    SharedArrayBuffer: "readonly"
+    SharedArrayBuffer: "readonly",
   },
   extends: [
     "eslint:recommended",
@@ -14,36 +14,36 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:import/typescript",
     "plugin:jest/recommended",
-    "prettier"
+    "prettier",
   ],
   parser: "babel-eslint",
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: "module"
+    sourceType: "module",
   },
   overrides: [
     {
       files: ["client/src/**"],
       env: {
         browser: true,
-        node: false
+        node: false,
       },
       extends: ["plugin:react/recommended", "plugin:jsx-a11y/recommended"],
       parserOptions: {
         ecmaFeatures: {
-          jsx: true
-        }
+          jsx: true,
+        },
       },
       plugins: ["react-hooks"],
       settings: {
         react: {
-          version: "latest"
-        }
+          version: "latest",
+        },
       },
       rules: {
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn"
-      }
-    }
-  ]
+        "react-hooks/exhaustive-deps": "warn",
+      },
+    },
+  ],
 };

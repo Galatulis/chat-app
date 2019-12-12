@@ -37,17 +37,17 @@ export default class Server {
               {
                 author: data.payload.author,
                 id: lastMessagesId,
-                text: data.payload.text
-              }
+                text: data.payload.text,
+              },
             ];
             ws.send(
               JSON.stringify({
                 payload: {
                   author: data.payload.author,
                   id: lastMessagesId,
-                  text: data.payload.text
+                  text: data.payload.text,
                 },
-                type: "ADD_MESSAGE"
+                type: "ADD_MESSAGE",
               })
             );
             broadcast(
@@ -55,9 +55,9 @@ export default class Server {
                 payload: {
                   author: data.payload.author,
                   id: lastMessagesId,
-                  text: data.payload.text
+                  text: data.payload.text,
                 },
-                type: "RECEIVE_MESSAGES"
+                type: "RECEIVE_MESSAGES",
               },
               ws
             );
@@ -69,18 +69,18 @@ export default class Server {
               ...this.listOfUsers,
               {
                 id: lastUsersIndex,
-                name: data.payload.name
-              }
+                name: data.payload.name,
+              },
             ];
             ws.send(
               JSON.stringify({
                 payload: this.listOfUsers[this.listOfUsers.length - 1],
-                type: "ADD_USER"
+                type: "ADD_USER",
               })
             );
             broadcast({
               payload: this.listOfUsers,
-              type: "LIST_USERS"
+              type: "LIST_USERS",
             });
             break;
           }
@@ -96,7 +96,7 @@ export default class Server {
         broadcast(
           {
             payload: this.listOfUsers,
-            type: "LIST_USERS"
+            type: "LIST_USERS",
           },
           ws
         );

@@ -10,7 +10,7 @@ const port = parseInt(process.env.SERVER_PORT);
 const middleware = [
   cors(),
   bodyParser.json(),
-  bodyParser.urlencoded({ extended: false })
+  bodyParser.urlencoded({ extended: false }),
 ];
 
 const server = new Server(...middleware);

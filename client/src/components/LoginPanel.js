@@ -34,9 +34,9 @@ function LoginPanel() {
       socket.send(
         JSON.stringify({
           payload: {
-            name: userName
+            name: userName,
           },
-          type: "ADD_USER"
+          type: "ADD_USER",
         })
       );
     }
@@ -64,7 +64,7 @@ function styles() {
       color: "#fff",
       fontSize: "18px",
       padding: "5px 0",
-      width: "100%"
+      width: "100%",
     },
     inputUserName: {
       background: "#fff",
@@ -74,13 +74,13 @@ function styles() {
       fontSize: "16px",
       padding: "20px 20px",
       textAlign: "center",
-      width: "100%"
+      width: "100%",
     },
     panelLogin: {
       border: "1px solid #ddd",
       borderRadius: "3px",
-      boxShadow: "1px 3px 5px rgba(0,0,0,0.2)"
-    }
+      boxShadow: "1px 3px 5px rgba(0,0,0,0.2)",
+    },
   };
 }
 

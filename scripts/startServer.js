@@ -14,8 +14,8 @@ const developmentServer = new Server(
     logLevel: "silent",
     publicPath: "",
     watchOptions: {
-      aggregateTimeout: 2000
-    }
+      aggregateTimeout: 2000,
+    },
   })
 );
 

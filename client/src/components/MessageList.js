@@ -29,19 +29,19 @@ function styles() {
       boxShadow: "1px 3px 5px rgba(0,0,0,0.2)",
       gridArea: "content",
       overflow: "auto",
-      padding: "10px 5px"
+      padding: "10px 5px",
     },
     textMessage: {
       borderBottom: "1px solid #e9e9e9",
       color: "#555",
       margin: "0 20px",
       padding: "14px 0px",
-      textIndent: "12px"
+      textIndent: "12px",
     },
     textMessageAuthor: {
       color: "#42b0f4",
-      textTransform: "uppercase"
-    }
+      textTransform: "uppercase",
+    },
   };
 }
 

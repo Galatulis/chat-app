@@ -29,9 +29,9 @@ function MessageInput() {
       JSON.stringify({
         payload: {
           author: currentUser,
-          text: currentMessage
+          text: currentMessage,
         },
-        type: "ADD_MESSAGE"
+        type: "ADD_MESSAGE",
       })
     );
     setCurrentMessage("");
@@ -63,7 +63,7 @@ function styles() {
       color: "#fff",
       fontSize: "18px",
       padding: "5px 0",
-      width: "100%"
+      width: "100%",
     },
     inputMessage: {
       background: "#fff",
@@ -71,7 +71,7 @@ function styles() {
       color: "#555",
       fontSize: "16px",
       padding: "20px 20px",
-      width: "100%"
+      width: "100%",
     },
     panelControl: {
       border: "1px solid #ddd",
@@ -79,8 +79,8 @@ function styles() {
       boxShadow: "1px 3px 5px rgba(0,0,0,0.2)",
       display: "grid",
       gridArea: "control",
-      gridTemplateRows: "60% 40%"
-    }
+      gridTemplateRows: "60% 40%",
+    },
   };
 }
 

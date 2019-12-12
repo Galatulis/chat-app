@@ -20,13 +20,13 @@ function styles() {
       borderRadius: "3px",
       boxShadow: "1px 3px 5px rgba(0,0,0,0.2)",
       gridArea: "header",
-      padding: "0px"
+      padding: "0px",
     },
     textTitle: {
       color: "#42b0f4",
       fontSize: "30px",
-      textAlign: "center"
-    }
+      textAlign: "center",
+    },
   };
 }
 

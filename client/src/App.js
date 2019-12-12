@@ -7,7 +7,7 @@ import {
   MessageInput,
   MessageList,
   SideBar,
-  TitleBar
+  TitleBar,
 } from "./components";
 
 const useStyles = createUseStyles(styles());
@@ -42,20 +42,20 @@ function styles() {
     "@global": {
       "body": {
         margin: "0px",
-        padding: "0px"
+        padding: "0px",
       },
       "*, *::before, *::after": {
-        boxSizing: "border-box"
+        boxSizing: "border-box",
       },
       "#root": {
-        height: "100vh"
-      }
+        height: "100vh",
+      },
     },
     "flexContainer": {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      height: "100%"
+      height: "100%",
     },
     "gridContainer": {
       display: "grid",
@@ -66,8 +66,8 @@ function styles() {
       gridTemplateRows:
         "minmax(50px, 100px) minmax(50px, 400px) minmax(50px, 100px)",
       margin: "0px",
-      maxWidth: "600px"
-    }
+      maxWidth: "600px",
+    },
   };
 }
 

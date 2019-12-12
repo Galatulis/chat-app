@@ -4,7 +4,7 @@ import { messageReducer, userReducer } from "../reducers";
 
 const rootReducer = combineReducers({
   message: messageReducer,
-  user: userReducer
+  user: userReducer,
 });
 
 export default createStore(rootReducer);

@@ -2,7 +2,7 @@ module.exports = {
   arrowParens: "avoid",
   bracketSpacing: true,
   endOfLine: "lf",
-  htmlWhitespaceSensitivity: "ignore",
+  htmlWhitespaceSensitivity: "css",
   jsxBracketSameLine: false,
   jsxSingleQuote: false,
   printWidth: 80,
@@ -11,6 +11,6 @@ module.exports = {
   singleQuote: false,
   tabWidth: 2,
   quoteProps: "consistent",
-  trailingComma: "none",
-  useTabs: false
+  trailingComma: "es5",
+  useTabs: false,
 };

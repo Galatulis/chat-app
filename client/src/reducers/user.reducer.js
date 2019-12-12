@@ -3,7 +3,7 @@ import { ActionType } from "../actions";
 const initialState = {
   currentUser: "",
   listOfUsers: [],
-  isLoggedIn: false
+  isLoggedIn: false,
 };
 
 export function userReducer(state = initialState, action) {
@@ -11,7 +11,7 @@ export function userReducer(state = initialState, action) {
     case ActionType.ADD_USER:
       return {
         ...state,
-        listOfUsers: [...state.listOfUsers, action.payload]
+        listOfUsers: [...state.listOfUsers, action.payload],
       };
     case ActionType.LIST_USERS:
       return { ...state, listOfUsers: action.payload };

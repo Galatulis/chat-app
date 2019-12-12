@@ -13,9 +13,9 @@ export function setupSocket(dispatch, name) {
     socket.send(
       JSON.stringify({
         payload: {
-          name
+          name,
         },
-        type: "ADD_USER"
+        type: "ADD_USER",
       })
     );
   };
@@ -27,7 +27,7 @@ export function setupSocket(dispatch, name) {
           addMessage({
             author: action.payload.author,
             id: action.payload.id,
-            text: action.payload.text
+            text: action.payload.text,
           })
         );
         break;
@@ -36,7 +36,7 @@ export function setupSocket(dispatch, name) {
           receiveMessages({
             author: action.payload.author,
             id: action.payload.id,
-            text: action.payload.text
+            text: action.payload.text,
           })
         );
         break;

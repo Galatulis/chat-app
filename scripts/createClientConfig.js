@@ -8,7 +8,7 @@ import {
   babelLoader,
   eslintLoader,
   fileLoader,
-  postcssLoader
+  postcssLoader,
 } from "./loaderConfig";
 import { clientDirectory, buildDirectory } from "./getDirectoryPath";
 
@@ -17,10 +17,10 @@ function getPlugins(isDevelopment) {
     new HtmlWebpackPlugin({
       template: path.join(clientDirectory, "public", "index.html"),
       filename: "index.html",
-      minify: !isDevelopment
+      minify: !isDevelopment,
     }),
     new FriendlyErrorsWebpackPlugin(),
-    new DotenvWebpackPlugin()
+    new DotenvWebpackPlugin(),
   ];
 
   if (!isDevelopment) {
@@ -37,14 +37,14 @@ export default function createConfig(isDevelopment) {
     devtool: isDevelopment ? "inline-source-map" : undefined,
     entry: [path.join(clientDirectory, "src", "index.js")],
     module: {
-      rules: [eslintLoader, babelLoader, postcssLoader, fileLoader]
+      rules: [eslintLoader, babelLoader, postcssLoader, fileLoader],
     },
     resolve: {
-      extensions: [".js", ".json"]
+      extensions: [".js", ".json"],
     },
     output: {
       filename: isDevelopment ? "[name].[hash].js" : "[name].[contenthash].js",
-      path: path.join(buildDirectory, "client")
+      path: path.join(buildDirectory, "client"),
     },
     watch: isDevelopment,
     optimization: {
@@ -54,11 +54,11 @@ export default function createConfig(isDevelopment) {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
             name: "vendors",
-            chunks: "all"
-          }
-        }
-      }
+            chunks: "all",
+          },
+        },
+      },
     },
-    plugins: getPlugins(isDevelopment)
+    plugins: getPlugins(isDevelopment),
   };
 }
