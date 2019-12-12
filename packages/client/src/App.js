@@ -9,16 +9,13 @@ import {
   SideBar,
   TitleBar
 } from "./components";
-import { StoreState } from "./interfaces";
 
 const useStyles = createUseStyles(styles());
 
 function App() {
   const classes = useStyles();
 
-  const isLoggedIn = useSelector<StoreState, StoreState["user"]["isLoggedIn"]>(
-    state => state.user.isLoggedIn
-  );
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn);
 
   useEffect(() => {
     document.title = "GalaChat";

@@ -1,36 +1,29 @@
-import React, { ChangeEvent, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import { createUseStyles } from "react-jss";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setupSocket, socket } from "../services";
 import * as actions from "../actions";
-import { StoreState } from "../interfaces";
 
 const useStyles = createUseStyles(styles());
 
 function MessageInput() {
   const classes = useStyles();
 
-  const currentMessage = useSelector<
-    StoreState,
-    StoreState["user"]["currentUser"]
-  >(state => state.message.currentMessage);
-  const currentUser = useSelector<
-    StoreState,
-    StoreState["user"]["currentUser"]
-  >(state => state.user.currentUser);
+  const currentMessage = useSelector(state => state.message.currentMessage);
+  const currentUser = useSelector(state => state.user.currentUser);
 
   const dispatch = useDispatch();
   const setCurrentMessage = useCallback(
-    (payload: string) => dispatch(actions.setCurrentMessage(payload)),
+    payload => dispatch(actions.setCurrentMessage(payload)),
     [dispatch]
   );
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = event => {
     setCurrentMessage(event.target.value);
   };
 
-  const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = event => {
     event.preventDefault();
     socket.send(
       JSON.stringify({

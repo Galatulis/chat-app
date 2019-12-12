@@ -1,4 +1,4 @@
-import React, { useCallback, useState, ChangeEvent } from "react";
+import React, { useCallback, useState } from "react";
 import { createUseStyles } from "react-jss";
 import { useDispatch } from "react-redux";
 
@@ -8,24 +8,24 @@ import { socket } from "../services";
 const useStyles = createUseStyles(styles());
 
 function LoginPanel() {
-  const [userName, setUserName] = useState<string>("");
+  const [userName, setUserName] = useState("");
   const classes = useStyles();
 
   const dispatch = useDispatch();
   const setLoginUser = useCallback(
-    (payload: boolean) => dispatch(actions.setLoginUser(payload)),
+    payload => dispatch(actions.setLoginUser(payload)),
     [dispatch]
   );
   const setCurrentUser = useCallback(
-    (payload: string) => dispatch(actions.setCurrentUser(payload)),
+    payload => dispatch(actions.setCurrentUser(payload)),
     [dispatch]
   );
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = event => {
     setUserName(event.target.value);
   };
 
-  const handleSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+  const handleSubmit = event => {
     event.preventDefault();
     if (userName !== "") {
       setCurrentUser(userName);

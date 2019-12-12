@@ -1,24 +1,17 @@
-import { RuleSetRule } from "webpack";
-
-import babelConfig from "./babelConfig";
-
-export const babelLoader: RuleSetRule = {
-  test: /\.(js|jsx|ts|tsx)$/,
+export const babelLoader = {
+  test: /\.js$/,
   exclude: /node_modules/,
-  use: {
-    loader: "babel-loader",
-    options: babelConfig
-  }
+  loader: "babel-loader"
 };
 
-export const eslintLoader: RuleSetRule = {
-  test: /\.(js|jsx|ts|tsx)$/,
+export const eslintLoader = {
+  test: /\.js$/,
   exclude: /node_modules/,
   enforce: "pre",
   loader: "eslint-loader"
 };
 
-export const postcssLoader: RuleSetRule = {
+export const postcssLoader = {
   test: /\.css$/,
   exclude: /node_modules/,
   use: [
@@ -43,7 +36,7 @@ export const postcssLoader: RuleSetRule = {
   ]
 };
 
-export const fileLoader: RuleSetRule = {
+export const fileLoader = {
   test: /\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)/,
   exclude: /node_modules/,
   use: [

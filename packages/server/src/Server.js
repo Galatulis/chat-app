@@ -2,30 +2,20 @@ import express from "express";
 import * as http from "http";
 import WebSocket from "ws";
 
-import { Message, RequestData, User } from "./interfaces";
-
 export default class Server {
-  private readonly app: express.Express;
-  private readonly server: http.Server;
-  private readonly wss: WebSocket.Server;
-  private readonly middleware: express.RequestHandler[];
-
-  private listOfUsers: User[] = [];
-  private listOfMessages: Message[] = [];
-
-  public constructor(...middleware: express.RequestHandler[]) {
+  constructor(...middleware) {
     this.middleware = middleware;
     this.app = express();
     this.server = http.createServer(this.app);
     this.wss = new WebSocket.Server({ server: this.server });
   }
 
-  public start(port = 4000) {
+  start(port = 4000) {
     if (this.middleware.length > 0) {
       this.app.use(this.middleware);
     }
 
-    const broadcast = (data: RequestData, ws?: WebSocket) => {
+    const broadcast = (data, ws) => {
       this.wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN && client !== ws) {
           client.send(JSON.stringify(data));
@@ -34,11 +24,11 @@ export default class Server {
     };
 
     this.wss.on("connection", ws => {
-      let lastUsersIndex: number;
-      let lastMessagesId: number;
+      let lastUsersIndex;
+      let lastMessagesId;
 
       ws.on("message", req => {
-        const data: RequestData = JSON.parse(req as string);
+        const data = JSON.parse(req);
         switch (data.type) {
           case "ADD_MESSAGE": {
             lastMessagesId = this.listOfMessages.length;
@@ -114,11 +104,7 @@ export default class Server {
     });
 
     this.server.listen(port, () =>
-      console.log(
-        `Listening on port ${
-          (this.server.address() as WebSocket.AddressInfo).port
-        }`
-      )
+      console.log(`Listening on port ${this.server.address().port}`)
     );
   }
 }

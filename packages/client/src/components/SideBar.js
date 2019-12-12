@@ -2,17 +2,12 @@ import React from "react";
 import { createUseStyles } from "react-jss";
 import { useSelector } from "react-redux";
 
-import { StoreState } from "../interfaces";
-
 const useStyles = createUseStyles(styles());
 
 function SideBar() {
   const classes = useStyles();
 
-  const listOfUsers = useSelector<
-    StoreState,
-    StoreState["user"]["listOfUsers"]
-  >(state => state.user.listOfUsers);
+  const listOfUsers = useSelector(state => state.user.listOfUsers);
 
   return (
     <aside className={classes.sideBar}>

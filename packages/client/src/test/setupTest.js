@@ -5,7 +5,7 @@ import { ThemeProvider } from "react-jss";
 
 import store from "../store";
 
-const customRender = (node: JSX.Element) => {
+const customRender = node => {
   return render(
     <Provider store={store}>
       <ThemeProvider theme={{}}>{node}</ThemeProvider>

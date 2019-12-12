@@ -1,7 +1,4 @@
-import { Dispatch } from "redux";
-
 import * as actions from "../actions";
-import { Action } from "../interfaces";
 
 const { addUser, addMessage, listUsers, receiveMessages } = actions;
 
@@ -11,7 +8,7 @@ export const socket = new WebSocket(
     .REACT_APP_PORT || 4000}`
 );
 
-export function setupSocket(dispatch: Dispatch, name: string) {
+export function setupSocket(dispatch, name) {
   socket.onopen = () => {
     socket.send(
       JSON.stringify({
@@ -23,7 +20,7 @@ export function setupSocket(dispatch: Dispatch, name: string) {
     );
   };
   socket.onmessage = event => {
-    const action: Action = JSON.parse(String(event.data));
+    const action = JSON.parse(String(event.data));
     switch (action.type) {
       case "ADD_MESSAGE":
         dispatch(

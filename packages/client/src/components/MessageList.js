@@ -2,17 +2,12 @@ import React from "react";
 import { createUseStyles } from "react-jss";
 import { useSelector } from "react-redux";
 
-import { StoreState } from "../interfaces";
-
 const useStyles = createUseStyles(styles());
 
 function MessageList() {
   const classes = useStyles();
 
-  const listOfMessages = useSelector<
-    StoreState,
-    StoreState["message"]["listOfMessages"]
-  >(state => state.message.listOfMessages);
+  const listOfMessages = useSelector(state => state.message.listOfMessages);
 
   return (
     <main className={classes.panelMessage}>

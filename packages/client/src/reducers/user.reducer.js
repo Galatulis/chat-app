@@ -1,12 +1,12 @@
-import { Action, ActionType, UserState } from "../interfaces";
+import { ActionType } from "../actions";
 
-const initialState: UserState = {
+const initialState = {
   currentUser: "",
   listOfUsers: [],
   isLoggedIn: false
 };
 
-export function userReducer(state = initialState, action: Action) {
+export function userReducer(state = initialState, action) {
   switch (action.type) {
     case ActionType.ADD_USER:
       return {

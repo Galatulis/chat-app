@@ -1,11 +1,11 @@
-import { Action, ActionType, MessageState } from "../interfaces";
+import { ActionType } from "../actions";
 
-const initialState: MessageState = {
+const initialState = {
   currentMessage: "",
   listOfMessages: []
 };
 
-export function messageReducer(state = initialState, action: Action) {
+export function messageReducer(state = initialState, action) {
   switch (action.type) {
     case ActionType.ADD_MESSAGE:
     case ActionType.RECEIVE_MESSAGES:
