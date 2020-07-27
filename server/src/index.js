@@ -6,7 +6,7 @@ import Server from "./Server";
 
 dotenv.config();
 
-const port = parseInt(process.env.SERVER_PORT);
+const port = parseInt(process.env.SERVER_PORT || 4000);
 const middleware = [
   cors(),
   bodyParser.json(),

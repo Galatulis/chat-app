@@ -2,20 +2,20 @@ import express from "express";
 import * as http from "http";
 import WebSocket from "ws";
 
-function broadcast(data, ws) {
-  this.wss.clients.forEach(client => {
-    if (client.readyState === WebSocket.OPEN && client !== ws) {
-      client.send(JSON.stringify(data));
-    }
-  });
-}
-
 export default class Server {
   constructor(...middleware) {
     this.middleware = middleware;
     this.app = express();
     this.server = http.createServer(this.app);
     this.wss = new WebSocket.Server({ server: this.server });
+  }
+
+  broadcast(data, ws) {
+    this.wss.clients.forEach(client => {
+      if (client.readyState === WebSocket.OPEN && client !== ws) {
+        client.send(JSON.stringify(data));
+      }
+    });
   }
 
   start(port = 4000) {
@@ -50,7 +50,7 @@ export default class Server {
                 type: "ADD_MESSAGE",
               })
             );
-            broadcast(
+            this.broadcast(
               {
                 payload: {
                   author: data.payload.author,
@@ -78,7 +78,7 @@ export default class Server {
                 type: "ADD_USER",
               })
             );
-            broadcast({
+            this.broadcast({
               payload: this.listOfUsers,
               type: "LIST_USERS",
             });
@@ -93,7 +93,7 @@ export default class Server {
         this.listOfUsers = this.listOfUsers.filter(
           user => user.id !== lastUsersIndex
         );
-        broadcast(
+        this.broadcast(
           {
             payload: this.listOfUsers,
             type: "LIST_USERS",

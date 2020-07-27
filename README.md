@@ -1,4 +1,4 @@
-# Lambe
+# Wicara
 
 A simple chat app for learning and fun.
 

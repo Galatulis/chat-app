@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { hot } from "react-hot-loader/root";
 import { createUseStyles } from "react-jss";
 import { useSelector } from "react-redux";
 
@@ -71,4 +72,4 @@ function styles() {
   };
 }
 
-export default App;
+export default hot(App);
