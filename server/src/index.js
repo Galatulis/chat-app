@@ -1,18 +1,8 @@
-import cors from "cors";
-import bodyParser from "body-parser";
-import dotenv from "dotenv";
+import { NestFactory } from "@nestjs/core";
 
-import Server from "./Server";
+import { AppModule } from "./app.module";
 
-dotenv.config();
-
-const port = parseInt(process.env.SERVER_PORT || 4000);
-const middleware = [
-  cors(),
-  bodyParser.json(),
-  bodyParser.urlencoded({ extended: false }),
-];
-
-const server = new Server(...middleware);
-
-server.start(port);
+(async function () {
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
+})();
