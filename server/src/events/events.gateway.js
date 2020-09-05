@@ -1,10 +1,4 @@
-import { Bind } from "@nestjs/common";
-import {
-  SubscribeMessage,
-  WebSocketGateway,
-  MessageBody,
-  ConnectedSocket,
-} from "@nestjs/websockets";
+import { SubscribeMessage, WebSocketGateway } from "@nestjs/websockets";
 
 @WebSocketGateway()
 export class EventsGateway {
@@ -13,23 +7,22 @@ export class EventsGateway {
 
   handleConnection(client) {
     client.emit("GET_ALL_USER", this.userList);
+    client.emit("GET_ALL_MESSAGE", this.messagesList);
   }
 
-  @Bind(ConnectedSocket(), MessageBody())
   @SubscribeMessage("ADD_USER")
-  addUser(client, data) {
+  handleUserEvents(client, data) {
     const currentUser = {
       id: client.id,
       name: data,
     };
     this.userList = [...this.userList, currentUser];
     client.broadcast.emit("ADD_USER", currentUser);
-    return currentUser;
+    client.emit("ADD_USER", currentUser);
   }
 
-  @Bind(ConnectedSocket(), MessageBody())
   @SubscribeMessage("ADD_MESSAGE")
-  messages(client, data) {
+  handleMessageEvents(client, data) {
     const currentUser = this.userList.find(({ id }) => id === client.id);
     const currentMessage = {
       author: currentUser,
@@ -38,7 +31,7 @@ export class EventsGateway {
     };
     this.messagesList = [...this.messagesList, currentMessage];
     client.broadcast.emit("ADD_MESSAGE", currentMessage);
-    return currentMessage;
+    client.emit("ADD_MESSAGE", currentMessage);
   }
 
   handleDisconnect(client) {
