@@ -3,6 +3,8 @@ const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const DotenvPlugin = require("dotenv-webpack");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const path = require("path");
 
 const getPath = (...subpath) => path.resolve(__dirname, ...(subpath || [""]));
@@ -13,14 +15,9 @@ module.exports = function () {
     mode: isDevelopment ? "development" : "production",
     target: "web",
     devtool: isDevelopment ? "inline-source-map" : "source-map",
-    entry: ["react-hot-loader/patch", getPath("src", "index.js")],
+    entry: [getPath("src", "index.js")],
     module: {
       rules: getLoaders(isDevelopment),
-    },
-    resolve: {
-      alias: isDevelopment
-        ? { "react-dom": "@hot-loader/react-dom" }
-        : undefined,
     },
     output: {
       filename: isDevelopment ? "[name].js" : "[name].[contenthash].js",
@@ -130,6 +127,12 @@ function getLoaders(isDevelopment) {
 
 function getPlugins(isDevelopment) {
   return [
+    isDevelopment && new ReactRefreshWebpackPlugin(),
+    new DotenvPlugin({
+      path: getPath(".env"),
+      safe: getPath(".env.example"),
+      systemvars: true,
+    }),
     new HtmlWebpackPlugin({
       template: getPath("public", "index.html"),
       filename: "index.html",
@@ -143,5 +146,5 @@ function getPlugins(isDevelopment) {
     new MiniCssExtractPlugin({
       filename: isDevelopment ? "[name].css" : "[name].[contenthash].css",
     }),
-  ];
+  ].filter(Boolean);
 }

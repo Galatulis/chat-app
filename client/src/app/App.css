@@ -1,0 +1,40 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+#root {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    "header header"
+    "sidebar content"
+    "sidebar control";
+  grid-template-columns:
+    minmax(50px, 150px)
+    minmax(50px, 450px);
+  grid-template-rows:
+    minmax(50px, 100px)
+    minmax(50px, 400px)
+    minmax(50px, 100px);
+  margin: 0px;
+  max-width: 600px;
+}

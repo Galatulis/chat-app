@@ -1,0 +1,27 @@
+.panel-control {
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-area: control;
+  grid-template-rows: 60% 40%;
+}
+
+.send-button {
+  background: #42b0f4;
+  border-radius: 0 0 4px 4px;
+  border: 2px solid #42b0f4;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.message-input {
+  background: #fff;
+  border: 0px;
+  color: #555;
+  font-size: 16px;
+  padding: 20px 20px;
+  width: 100%;
+}

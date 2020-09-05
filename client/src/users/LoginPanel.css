@@ -1,0 +1,26 @@
+.panel-login {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.login-button {
+  background: #42b0f4;
+  border: 2px solid #42b0f4;
+  border-radius: 0 0 4px 4px;
+  color: #fff;
+  font-size: 18px;
+  padding: 5px 0;
+  width: 100%;
+}
+
+.input-username {
+  background: #fff;
+  border: 0px;
+  box-sizing: border-box;
+  color: #555;
+  font-size: 16px;
+  padding: 20px 20px;
+  text-align: center;
+  width: 100%;
+}

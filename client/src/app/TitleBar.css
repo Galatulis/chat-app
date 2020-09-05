@@ -1,0 +1,13 @@
+.title-bar {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.2);
+  grid-area: header;
+  padding: 0px;
+}
+
+.title-text {
+  color: #42b0f4;
+  font-size: 30px;
+  text-align: center;
+}

@@ -1,16 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ThemeProvider } from "react-jss";
-import { Provider } from "react-redux";
+import { Provider as StoreProvider } from "react-redux";
 
-import store from "./store";
-import App from "./App";
+import store from "./shared/store";
+import { SocketProvider } from "./shared/socket";
+import App from "./app/App";
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ThemeProvider theme={{}}>
+  <StoreProvider store={store}>
+    {/* eslint-disable-next-line no-undef */}
+    <SocketProvider uri={process.env.SERVER_URI}>
       <App />
-    </ThemeProvider>
-  </Provider>,
+    </SocketProvider>
+  </StoreProvider>,
   document.querySelector("#root")
 );

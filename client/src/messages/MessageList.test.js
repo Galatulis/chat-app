@@ -1,6 +1,6 @@
 import React from "react";
 
-import { cleanup, render } from "../test";
+import { cleanup, render } from "../shared/setupTest";
 import MessageList from "./MessageList";
 
 afterEach(cleanup);
