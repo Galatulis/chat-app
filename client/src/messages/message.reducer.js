@@ -18,4 +18,4 @@ export function messageReducer(state = initialState, action) {
   }
 }
 
-export const messageListSelector = state => state.message.messageList;
+export const messageListSelector = (state) => state.message.messageList;

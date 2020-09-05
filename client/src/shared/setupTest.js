@@ -5,7 +5,7 @@ import { render, cleanup } from "@testing-library/react";
 import store from "./store";
 import { SocketProvider } from "./socket";
 
-const customRender = node => {
+const customRender = (node) => {
   return render(
     <StoreProvider store={store}>
       <SocketProvider uri="">{node}</SocketProvider>

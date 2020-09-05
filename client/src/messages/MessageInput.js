@@ -7,7 +7,7 @@ export default function MessageInput() {
   const [message, setMessage] = useState("");
   const socket = useSocket();
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (message) {
       socket.emit("ADD_MESSAGE", message);
@@ -15,7 +15,7 @@ export default function MessageInput() {
     }
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setMessage(event.target.value);
   };
 

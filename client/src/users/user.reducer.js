@@ -15,7 +15,9 @@ export function userReducer(state = initialState, action) {
     case userAction.REMOVE_USER:
       return {
         ...state,
-        userList: state.userList.filter(user => user.id !== action.payload.id),
+        userList: state.userList.filter(
+          (user) => user.id !== action.payload.id
+        ),
       };
     case userAction.LOAD_USERS:
       return { ...state, userList: action.payload };
@@ -26,6 +28,6 @@ export function userReducer(state = initialState, action) {
   }
 }
 
-export const userListSelector = state => state.user.userList;
+export const userListSelector = (state) => state.user.userList;
 
-export const isLoggedInSelector = state => state.user.isLoggedIn;
+export const isLoggedInSelector = (state) => state.user.isLoggedIn;

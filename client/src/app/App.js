@@ -22,19 +22,19 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    socket.on("GET_ALL_USER", users => {
+    socket.on("GET_ALL_USER", (users) => {
       dispatch(loadUsers(users));
     });
-    socket.on("ADD_USER", user => {
+    socket.on("ADD_USER", (user) => {
       dispatch(addUser(user));
     });
-    socket.on("REMOVE_USER", user => {
+    socket.on("REMOVE_USER", (user) => {
       dispatch(removeUser(user));
     });
-    socket.on("GET_ALL_MESSAGE", messages => {
+    socket.on("GET_ALL_MESSAGE", (messages) => {
       dispatch(loadMessages(messages));
     });
-    socket.on("ADD_MESSAGE", message => {
+    socket.on("ADD_MESSAGE", (message) => {
       dispatch(addMessage(message));
     });
   }, [dispatch, socket]);

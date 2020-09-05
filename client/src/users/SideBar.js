@@ -9,7 +9,7 @@ function SideBar() {
 
   return (
     <aside className="side-bar">
-      {userList.map(user => (
+      {userList.map((user) => (
         <p key={user.id} className="text-user">
           {user.name}
         </p>

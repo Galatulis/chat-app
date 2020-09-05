@@ -10,11 +10,11 @@ export default function LoginPanel() {
   const dispatch = useDispatch();
   const socket = useSocket();
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setUser(event.target.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (user) {
       socket.emit("ADD_USER", user);

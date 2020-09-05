@@ -9,7 +9,7 @@ export default function MessageList() {
 
   return (
     <main className="panel-message">
-      {messageList.map(message => (
+      {messageList.map((message) => (
         <p key={message.id} className="text-message">
           <span className="text-message-author">{message.author.name}</span>
           &nbsp;&#58;&nbsp; {message.text}
